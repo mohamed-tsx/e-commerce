@@ -1,8 +1,11 @@
 const express = require("express");
 require("dotenv").config();
+const userRoutes = require("./Src/Routes/userRoutes");
 const PORT = process.env.PORT;
 
 const Server = express();
+
+Server.use("/api/", userRoutes);
 
 Server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
