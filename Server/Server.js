@@ -5,6 +5,9 @@ const PORT = process.env.PORT;
 
 const Server = express();
 
+Server.use(express.json());
+Server.use(express.urlencoded({ extended: true }));
+
 Server.use("/api/", userRoutes);
 
 Server.listen(PORT, () => {
