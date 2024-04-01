@@ -8,7 +8,7 @@ const Server = express();
 
 Server.use(express.json());
 Server.use(express.urlencoded({ extended: true }));
-Server.use("/api/", userRoutes);
+Server.use("/api/user/", userRoutes);
 
 Server.use(errorHandler);
 
