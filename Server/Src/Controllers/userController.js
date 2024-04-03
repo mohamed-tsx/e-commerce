@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
 const Prisma = require("../Config/Prisma");
+const generateToken = require("../Config/generateToken");
 
 // @description Register new user
 // @Method POST
@@ -103,11 +104,16 @@ const Login = asyncHandler(async (req, res) => {
 
   const { password: pass, ...rest } = user;
 
+  const token = generateToken(user.id, user.email);
+
   //If the password is correct log in the user and return success response
-  res.status(200).json({
-    message: "User logged in successfully",
-    rest,
-  });
+  res
+    .cookie("token", token, { httpOnly: true, sameSite: "none", secure: true })
+    .status(200)
+    .json({
+      message: "User logged in successfully",
+      rest,
+    });
 });
 
 module.exports = {
