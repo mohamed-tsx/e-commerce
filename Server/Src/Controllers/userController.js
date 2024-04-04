@@ -68,6 +68,12 @@ const Login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
   //Check if the data is valid and throw an error if it is not valid
+  if (!email || !password) {
+    res.status(403);
+    throw new Error("Please provide all the required fields");
+  }
+
+  //Check if the data is valid and throw an error if it is not valid
   if (!(email && password)) {
     res.status(403);
     throw new Error("Please fill all the required fields");

@@ -13,17 +13,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum userRoles {
+  admin
+  regular
+}
+
 model User {
-  id       String @id @default(uuid())
+  id       String    @id @default(uuid())
   username String
-  email    String @unique
+  email    String    @unique
+  role     userRoles @default(regular)
+  photo    String?   @default("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
   password String
 }
 
 model Product {
-  id                 String @id @default(uuid())
+  id                 String  @id @default(uuid())
   ProductName        String
   productPrice       Float
   productDescription String
+  imageUrl           String?
   quantity           Int
 }
