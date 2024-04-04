@@ -19,3 +19,11 @@ model User {
   email    String @unique
   password String
 }
+
+model Product {
+  id                 String @id @default(uuid())
+  ProductName        String
+  productPrice       Float
+  productDescription String
+  quantity           Int
+}
