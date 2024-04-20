@@ -1,6 +1,7 @@
 const Prisma = require("../Config/Prisma");
 
 const isAdmin = async (req, res, next) => {
+  // Fetch id from user request
   const { id } = req.user;
 
   try {
