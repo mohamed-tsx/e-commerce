@@ -29,9 +29,9 @@ model User {
 
 model Product {
   id                 String  @id @default(uuid())
-  ProductName        String
+  productName        String
   productPrice       Float
   productDescription String
-  imageUrl           String?
+  imageUrl           String? @default("https://en.m.wikipedia.org/wiki/File:Placeholder_view_vector.svg")
   quantity           Int
 }
