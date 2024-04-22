@@ -35,6 +35,15 @@ const addProduct = asyncHandler(async (req, res) => {
   });
 });
 
+const allProducts = asyncHandler(async (req, res) => {
+  const allProducts = await Prisma.product.findMany();
+  res.status(200).json({
+    allProducts,
+    success: true,
+  });
+});
+
 module.exports = {
   addProduct,
+  allProducts,
 };
