@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FiHome, FiShoppingCart, FiX } from "react-icons/fi";
+import { FiHome, FiX } from "react-icons/fi";
+import { AiOutlineShopping } from "react-icons/ai";
 
 interface SidebarProps {
   onClose: () => void;
@@ -16,25 +17,32 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
           </button>
         </div>
         <nav className="p-4">
-          <ul>
-            <li className="mb-4">
-              <Link
-                to="/"
-                className="flex items-center text-gray-800 hover:text-gray-600"
-                onClick={onClose}
-              >
-                <FiHome className="mr-2" />
-                Home
+          <ul className="">
+            <li
+              className={`mb-3 hover:bg-gray-200 rounded-md ${
+                location.pathname === "" ? "bg-gray-200" : ""
+              }`}
+            >
+              <Link to="/" className="flex items-center space-x-2 p-2 rounded">
+                <span className="text-xl">
+                  <FiHome />
+                </span>
+                <span className="text-sm">Home</span>
               </Link>
             </li>
-            <li className="mb-4">
+            <li
+              className={`mb-3 hover:bg-gray-200 rounded-md ${
+                location.pathname === "/cart" ? "bg-gray-200" : ""
+              }`}
+            >
               <Link
                 to="/cart"
-                className="flex items-center text-gray-800 hover:text-gray-600"
-                onClick={onClose}
+                className="flex items-center space-x-2 p-2 rounded"
               >
-                <FiShoppingCart className="mr-2" />
-                Cart
+                <span className="text-xl">
+                  <AiOutlineShopping />
+                </span>
+                <span className="text-sm">Cart</span>
               </Link>
             </li>
           </ul>
