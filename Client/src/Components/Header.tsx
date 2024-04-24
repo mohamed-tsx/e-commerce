@@ -4,6 +4,7 @@ import Logo from "/Zylo Logo.png";
 import { RiMenu4Fill } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 import SideBar from "./SideBar";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [itemCount, setItemCount] = useState(10);
@@ -30,10 +31,15 @@ const Header = () => {
           </div>
         </div>
         <div className="items-center gap-4 hidden md:flex">
-          <button className="p-1 px-4 text-center bg-black text-white rounded-full">
+          <Link
+            to="/login"
+            className="p-1 px-4 text-center bg-black text-white rounded-full"
+          >
             Login
-          </button>
-          <button className="">Sign Up</button>
+          </Link>
+          <Link to="/signup" className="">
+            Sign Up
+          </Link>
         </div>
         <button onClick={toggleMenu} className="md:hidden">
           {isMenuOpen ? <IoClose /> : <RiMenu4Fill />}
