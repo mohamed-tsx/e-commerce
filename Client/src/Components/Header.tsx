@@ -1,13 +1,16 @@
 import { AiOutlineShopping } from "react-icons/ai";
 import Logo from "/Zylo Logo.png";
 import { useState } from "react";
+import { RiMenu4Fill } from "react-icons/ri";
+import { IoClose } from "react-icons/io5";
 const Header = () => {
   const [itemCount, setItemCount] = useState(10);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <div className="mt-4">
+    <div className="">
       <ul className="flex justify-between items-center">
-        <img src={Logo} width={50} alt="" />
-        <div className="flex gap-3 items-center">
+        <img src={Logo} width={40} alt="" />
+        <div className="gap-3 items-center hidden md:flex">
           <li>Home</li>
           <div className="relative">
             <AiOutlineShopping size={26} />
@@ -28,12 +31,18 @@ const Header = () => {
             )}
           </div>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="items-center gap-4 hidden md:flex">
           <button className="p-1 px-4 text-center bg-black text-white rounded-full">
             Login
           </button>
           <button className="">Sign Up</button>
         </div>
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden"
+        >
+          {isMenuOpen ? <RiMenu4Fill /> : <IoClose />}
+        </button>
       </ul>
     </div>
   );

@@ -3,7 +3,7 @@ import Header from "./Components/Header";
 import Home from "./Pages/Home Page/Home";
 export default function App() {
   return (
-    <div className="max-w-[1200px] mx-auto">
+    <div className="p-10">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
