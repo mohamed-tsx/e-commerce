@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [itemCount, setItemCount] = useState(10);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<Boolean>(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
