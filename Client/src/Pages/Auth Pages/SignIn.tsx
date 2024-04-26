@@ -2,6 +2,7 @@ import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import Logo from "/Zylo Logo.png";
 import { Link } from "react-router-dom";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useUser } from "../../Hooks/useUser";
 
 interface formDataType {
   username: string;
@@ -11,6 +12,7 @@ interface formDataType {
 const apiUrl = "/api/user/login";
 
 const SignIn = () => {
+  const saveUserInfo = useUser((state) => state.saveUserInfo);
   const [formData, setFormData] = useState<formDataType>({
     username: "",
     email: "",
@@ -51,6 +53,7 @@ const SignIn = () => {
         setError(data.message);
         return;
       }
+      saveUserInfo(data.rest);
       setError("");
       setFormData({
         username: "",
