@@ -3,6 +3,7 @@ import Logo from "/Zylo Logo.png";
 import { Link } from "react-router-dom";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useUser } from "../../Hooks/useUser";
+import { useNavigate } from "react-router-dom";
 
 interface formDataType {
   username: string;
@@ -12,6 +13,7 @@ interface formDataType {
 const apiUrl = "/api/user/login";
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const saveUserInfo = useUser((state) => state.saveUserInfo);
   const [formData, setFormData] = useState<formDataType>({
     username: "",
@@ -60,8 +62,7 @@ const SignIn = () => {
         email: "",
         password: "",
       });
-
-      console.log("Logged In successfully");
+      navigate("/");
     } catch (error) {
       setError("Failed to register. Please try again.");
     }
@@ -132,13 +133,15 @@ const SignIn = () => {
             </button>
           </form>
         </div>
-        <p className="text-red-600 text-sm">{error}</p>
-        <p className="text-sm mt-2 text-center md:text-right">
-          Don't have an account?{" "}
-          <Link to="/signup" className="text-blue-500">
-            Sign Up
-          </Link>
-        </p>
+        <div className="flex flex-col justify-between items-center md:flex-row">
+          <p className="text-red-600 text-sm">{error}</p>
+          <p className="text-sm mt-2 text-center md:text-right">
+            Don't have an account?{" "}
+            <Link to="/signup" className="text-blue-500">
+              Sign Up
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
