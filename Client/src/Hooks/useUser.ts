@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 interface UserType {
   username: string;
@@ -20,9 +21,17 @@ type UserStore = {
   saveUserInfo: (userInfo: UserType) => void;
 };
 
-export const useUser = create<UserStore>((set) => ({
-  User: User,
-  saveUserInfo: (userInfo) => {
-    set(() => ({ User: userInfo }));
-  },
-}));
+export const useUser = create<UserStore>()(
+  persist(
+    (set, get) => ({
+      User: User,
+      saveUserInfo: (userInfo) => {
+        set(() => ({ User: (get().User = userInfo) }));
+      },
+    }),
+    {
+      name: "user-storage", // name of the item in the storage (must be unique)
+      storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
+    }
+  )
+);
