@@ -2,6 +2,7 @@ import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import Logo from "/Zylo Logo.png";
 import { Link } from "react-router-dom";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface formDataType {
   username: string;
@@ -12,6 +13,7 @@ interface formDataType {
 const apiUrl = "/api/user/";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<formDataType>({
     username: "",
     email: "",
@@ -64,8 +66,7 @@ const SignUp = () => {
         password: "",
         confirmPassword: "",
       });
-
-      console.log("Registered successfully");
+      navigate("/signin");
     } catch (error) {
       setError("Failed to register. Please try again.");
     }
