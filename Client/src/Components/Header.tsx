@@ -5,8 +5,11 @@ import { RiMenu4Fill } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 import SideBar from "./SideBar";
 import { Link } from "react-router-dom";
+import { useUser } from "../Hooks/useUser";
 
 const Header = () => {
+  const user = useUser((state) => state.User);
+  const logout = useUser((state) => state.logout);
   const [itemCount, setItemCount] = useState(10);
   const [isMenuOpen, setIsMenuOpen] = useState<Boolean>(false);
 
@@ -30,17 +33,27 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="items-center gap-4 hidden md:flex">
-          <Link
-            to="/login"
-            className="p-1 px-4 text-center bg-black text-white rounded-full"
+        {user ? (
+          <div
+            className="items-center gap-2 hidden md:flex border-2 p-2 rounded-full"
+            onClick={logout}
           >
-            Login
-          </Link>
-          <Link to="/signup" className="">
-            Sign Up
-          </Link>
-        </div>
+            <img src={user.photo} width={15} className="rounded-full" />
+            <p className="text-xs">{user.username}</p>
+          </div>
+        ) : (
+          <div className="items-center gap-4 hidden md:flex">
+            <Link
+              to="/login"
+              className="p-1 px-4 text-center bg-black text-white rounded-full"
+            >
+              Login
+            </Link>
+            <Link to="/signup" className="">
+              Sign Up
+            </Link>
+          </div>
+        )}
         <button onClick={toggleMenu} className="md:hidden">
           {isMenuOpen ? <IoClose /> : <RiMenu4Fill />}
         </button>

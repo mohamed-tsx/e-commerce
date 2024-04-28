@@ -5,7 +5,7 @@ import SignUp from "./Pages/Auth Pages/SignUp";
 import SignIn from "./Pages/Auth Pages/SignIn";
 export default function App() {
   return (
-    <div className="p-10">
+    <div className="px-16 py-6">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

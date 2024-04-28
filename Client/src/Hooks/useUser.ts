@@ -17,16 +17,21 @@ const User = {
 };
 
 type UserStore = {
-  User: UserType;
+  User: UserType | null;
   saveUserInfo: (userInfo: UserType) => void;
+  logout: () => void;
 };
 
 export const useUser = create<UserStore>()(
   persist(
     (set, get) => ({
-      User: User,
+      User: null,
       saveUserInfo: (userInfo) => {
         set(() => ({ User: (get().User = userInfo) }));
+      },
+      logout: () => {
+        set(() => ({ User: null }));
+        localStorage.removeItem("user-storage");
       },
     }),
     {
