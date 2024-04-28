@@ -8,13 +8,6 @@ interface UserType {
   role: string;
   id: string;
 }
-const User = {
-  id: "",
-  username: "",
-  email: "",
-  photo: "",
-  role: "",
-};
 
 type UserStore = {
   User: UserType | null;
