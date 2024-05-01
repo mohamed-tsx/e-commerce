@@ -11,7 +11,7 @@ import ProfileSideBar from "./ProfileSideBar";
 
 const Header = () => {
   const user = useUser((state) => state.User);
-  const [itemCount, setItemCount] = useState(10);
+  const [itemCount] = useState(10);
   const [isMenuOpen, setIsMenuOpen] = useState<Boolean>(false);
   const [isProfileSideBarOpen, setIsProfileSideBarOpen] =
     useState<Boolean>(false);
@@ -70,7 +70,7 @@ const Header = () => {
         ) : (
           <div className="items-center gap-4 hidden md:flex">
             <Link
-              to="/login"
+              to="/signin"
               className="p-1 px-4 text-center bg-black text-white rounded-full"
             >
               Login
