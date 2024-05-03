@@ -14,7 +14,7 @@ const Hero = () => {
           Centeral
         </h1>
         <p className="font-medium mt-6 text-2xl">
-          Welcome to Zylo, where fashion meets comfort. Explore our curated
+          Welcome to Zylo where fashion meets comfort. Explore our curated
           collection of clothing, accessories, and more.
         </p>
         <button className="flex bg-black px-16 rounded-md p-2 text-white mt-6">
