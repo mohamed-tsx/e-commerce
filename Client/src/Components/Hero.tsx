@@ -7,7 +7,7 @@ import image5 from "/Hero Images/pexels-freestocks-307790.jpg";
 
 const Hero = () => {
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 flex-col lg:flex-row">
       <div className="mt-56 w-1/2">
         <h1 className="font-semibold text-5xl">
           Zylo <span className=" rounded-md bg-black text-white">|</span> Style
@@ -21,7 +21,7 @@ const Hero = () => {
           <Link to={"/"}>Shop now</Link>
         </button>
       </div>
-      <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
+      <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0 -z-10">
         <div className="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
           <div className="relative">
             <img
@@ -31,7 +31,6 @@ const Hero = () => {
               className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
             />
           </div>
-          <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"></div>
         </div>
         <div className="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36">
           <div className="relative">
@@ -41,7 +40,6 @@ const Hero = () => {
               width={200}
               className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
             />
-            <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"></div>
           </div>
           <div className="relative">
             <img
@@ -50,27 +48,24 @@ const Hero = () => {
               width={200}
               className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
             />
-            <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"></div>
           </div>
-          <div className="w-44 flex-none space-y-8 pt-32 sm:pt-0">
-            <div className="relative">
-              <img
-                src={image2}
-                alt=""
-                width={200}
-                className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-              />
-              <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"></div>
-            </div>
-            <div className="relative">
-              <img
-                src={image3}
-                alt=""
-                width={200}
-                className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
-              />
-              <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"></div>
-            </div>
+        </div>
+        <div className="w-44 flex-none space-y-8 pt-32 sm:pt-0">
+          <div className="relative">
+            <img
+              src={image4}
+              alt=""
+              width={200}
+              className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+            />
+          </div>
+          <div className="relative">
+            <img
+              src={image5}
+              alt=""
+              width={200}
+              className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+            />
           </div>
         </div>
       </div>

@@ -37,7 +37,7 @@ const Header = () => {
         <Link to="/">
           <img src={Logo} width={40} alt="" />
         </Link>
-        <div className="gap-3 items-center hidden md:flex">
+        <div className="gap-3 items-center hidden lg:flex">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -54,7 +54,7 @@ const Header = () => {
           </div>
         </div>
         {user ? (
-          <div className="items-center gap-2 hidden md:flex border-2 p-2 rounded-full">
+          <div className="items-center gap-2 hidden lg:flex border-2 p-2 rounded-full">
             <img src={user.photo} width={15} className="rounded-full" />
             <p className="text-xs">{user.username}</p>
             <button
@@ -68,7 +68,7 @@ const Header = () => {
             </button>
           </div>
         ) : (
-          <div className="items-center gap-4 hidden md:flex">
+          <div className="items-center gap-4 hidden lg:flex">
             <Link
               to="/signin"
               className="p-1 px-4 text-center bg-black text-white rounded-full"
@@ -80,7 +80,7 @@ const Header = () => {
             </Link>
           </div>
         )}
-        <button onClick={toggleMenu} className="md:hidden">
+        <button onClick={toggleMenu} className="lg:hidden">
           {isMenuOpen ? <IoClose /> : <RiMenu4Fill />}
         </button>
       </ul>
