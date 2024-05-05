@@ -1,8 +1,6 @@
 import { CiHeart } from "react-icons/ci";
 import image4 from "/Hero Images/pexels-elsimage-3394347.jpg";
 
-import React from "react";
-
 const ProductItem = () => {
   return (
     <div>

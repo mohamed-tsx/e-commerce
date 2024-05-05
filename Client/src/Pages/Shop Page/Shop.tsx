@@ -6,7 +6,6 @@ const Shop = () => {
       <div className="">
         <h1>All Products</h1>
         <hr className="mt-4" />
-        ProductItem
         <ProductItem />
       </div>
     </div>
