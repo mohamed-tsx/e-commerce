@@ -1,4 +1,4 @@
-import ProductItem from "../../Components/ProductItem";
+import AllProducts from "../../Components/AllProducts";
 
 const Shop = () => {
   return (
@@ -6,7 +6,8 @@ const Shop = () => {
       <div className="">
         <h1>All Products</h1>
         <hr className="mt-4" />
-        <ProductItem />
+        <AllProducts />
+        {/* <ProductItem /> */}
       </div>
     </div>
   );
