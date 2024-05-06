@@ -5,9 +5,7 @@ const Shop = () => {
     <div className="p-12">
       <div className="">
         <h1>All Products</h1>
-        <hr className="mt-4" />
         <AllProducts />
-        {/* <ProductItem /> */}
       </div>
     </div>
   );

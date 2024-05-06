@@ -36,7 +36,7 @@ const AllProducts = () => {
     <div>
       {error && <p>{error}</p>}
       {products.map((product: Product) => (
-        <div key={product.id}>
+        <div key={product.id} className="flex">
           <ProductItem {...product} />
         </div>
       ))}
