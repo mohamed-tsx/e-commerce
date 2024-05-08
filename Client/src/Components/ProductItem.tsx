@@ -19,7 +19,7 @@ const ProductItem = ({
         <img
           alt="Product Image"
           className="w-full h-64 object-cover"
-          src={imageUrl} // Use imageUrl prop here
+          src={imageUrl}
           style={{
             aspectRatio: "500/500",
             objectFit: "cover",
