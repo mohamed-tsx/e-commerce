@@ -62,7 +62,7 @@ const Hero = () => {
           <div className="relative">
             <img
               src={image5}
-              alt=""
+              alt="Hero Image"
               width={200}
               className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
             />
