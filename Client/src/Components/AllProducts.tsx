@@ -33,7 +33,7 @@ const AllProducts = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex">
       {error && <p>{error}</p>}
       {products.map((product: Product) => (
         <div key={product.id} className="flex">
