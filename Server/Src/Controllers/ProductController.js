@@ -36,6 +36,7 @@ const addProduct = asyncHandler(async (req, res) => {
 });
 
 const allProducts = asyncHandler(async (req, res) => {
+  // Fetch Products from database
   const allProducts = await Prisma.product.findMany();
   res.status(200).json({
     allProducts,
@@ -47,6 +48,7 @@ const deleteProducts = asyncHandler(async (req, res) => {
   // Fetch product id from request params
   const id = req.params.id;
 
+  // Fetch the rwquested product from database to verify if it exists
   const product = await Prisma.product.findUnique({
     where: {
       id,
@@ -56,6 +58,8 @@ const deleteProducts = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Product not found");
   }
+
+  // Delete the product
 
   const deletedProduct = await Prisma.product.delete({
     where: {
