@@ -8,9 +8,11 @@ import { Link } from "react-router-dom";
 import { useUser } from "../Hooks/useUser";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 import ProfileSideBar from "./ProfileSideBar";
+import { useCart } from "../Hooks/useCart";
 
 const Header = () => {
   const user = useUser((state) => state.User);
+  const products = useCart((state) => state.Products);
   const [itemCount] = useState(10);
   const [isMenuOpen, setIsMenuOpen] = useState<Boolean>(false);
   const [isProfileSideBarOpen, setIsProfileSideBarOpen] =
@@ -48,12 +50,14 @@ const Header = () => {
             <Link to="/cart">
               <AiOutlineShopping size={26} />
             </Link>
-            <div
-              className="absolute top-0 right-0 bg-red-500 rounded-full w-6 h-6 flex items-center justify-center text-white text-xs font-bold"
-              style={{ transform: "translate(50%, -50%)" }}
-            >
-              {itemCount > 9 ? "9+" : itemCount}
-            </div>
+            {products.length > 0 && (
+              <div
+                className="absolute top-0 right-0 bg-red-500 rounded-full w-6 h-6 flex items-center justify-center text-white text-xs font-bold"
+                style={{ transform: "translate(50%, -50%)" }}
+              >
+                {products.length > 9 ? "9+" : products.length}
+              </div>
+            )}
           </div>
         </div>
         {user ? (

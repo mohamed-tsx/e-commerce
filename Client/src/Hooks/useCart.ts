@@ -23,13 +23,9 @@ export const useCart = create<UseCart>()(
           Products: [...state.Products, product],
         }));
       },
-      //   logout: () => {
-      //     set(() => ({ User: null }));
-      //     localStorage.removeItem("user-storage");
-      //   },
     }),
     {
-      name: "user-storage", // name of the item in the storage (must be unique)
+      name: "product-storage", // name of the item in the storage (must be unique)
       storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
     }
   )

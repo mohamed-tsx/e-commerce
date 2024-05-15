@@ -17,8 +17,6 @@ const ProductItem = ({
   productPrice,
 }: ProductProps) => {
   const addProducts = useCart((state) => state.addProduct);
-  const products = useCart((state) => state.Products);
-  console.log(products);
   const currentProduct = {
     id,
     imageUrl,
