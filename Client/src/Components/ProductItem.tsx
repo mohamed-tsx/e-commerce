@@ -16,6 +16,17 @@ const ProductItem = ({
   productName,
   productPrice,
 }: ProductProps) => {
+  const addProducts = useCart((state) => state.addProduct);
+  const products = useCart((state) => state.Products);
+  console.log(products);
+  const currentProduct = {
+    id,
+    imageUrl,
+    productDescription,
+    productName,
+    productPrice,
+  };
+
   return (
     <div className="p-3 flex">
       <div className="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-sm">
@@ -34,7 +45,10 @@ const ProductItem = ({
           <div className="flex items-center justify-between mt-auto">
             <span className="text-2xl font-bold">${productPrice}</span>
             <div className="flex items-center gap-2">
-              <button className="px-7 py-2 bg-black text-white rounded-md">
+              <button
+                className="px-7 py-2 bg-black text-white rounded-md"
+                onClick={() => addProducts(currentProduct)}
+              >
                 Add to Cart
               </button>
               <button className="p-3 rounded-md hover:bg-gray-200">
