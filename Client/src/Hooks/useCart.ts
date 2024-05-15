@@ -11,12 +11,18 @@ interface Product {
 
 type UseCart = {
   Products: Product[];
+  addProduct: (product: Product) => void;
 };
 
 export const useCart = create<UseCart>()(
   persist(
     (set, get) => ({
       Products: [],
+      addProduct: (product) => {
+        set((state) => ({
+          Products: [...state.Products, product],
+        }));
+      },
       //   logout: () => {
       //     set(() => ({ User: null }));
       //     localStorage.removeItem("user-storage");
