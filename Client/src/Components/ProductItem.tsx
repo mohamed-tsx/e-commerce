@@ -1,6 +1,8 @@
 import { CiHeart } from "react-icons/ci";
+import { useCart } from "../Hooks/useCart";
 
 type ProductProps = {
+  id: string;
   imageUrl: string;
   productDescription: string;
   productName: string;
@@ -8,6 +10,7 @@ type ProductProps = {
 };
 
 const ProductItem = ({
+  id,
   imageUrl,
   productDescription,
   productName,
