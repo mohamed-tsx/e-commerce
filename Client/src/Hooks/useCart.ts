@@ -9,6 +9,7 @@ interface Product {
   productPrice: number;
 }
 
+// Use cart
 type UseCart = {
   Products: Product[];
   addProduct: (product: Product) => void;
