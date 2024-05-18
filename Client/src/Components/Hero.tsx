@@ -7,7 +7,7 @@ import image5 from "/Hero Images/pexels-freestocks-307790.jpg";
 
 const Hero = () => {
   return (
-    <div className="flex gap-2 flex-col lg:flex-row">
+    <div className="flex gap-2 flex-col lg:flex-row mt-4">
       <div className="mt-56 w-1/2">
         <h1 className="font-semibold text-5xl">
           Zylo <span className=" rounded-md bg-black text-white">|</span> Style
