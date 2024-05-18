@@ -1,3 +1,4 @@
+import { getItem } from "localforage";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
@@ -9,10 +10,13 @@ interface Product {
   productPrice: number;
 }
 
+type id = string;
+
 // Use cart
 type UseCart = {
   Products: Product[];
   addProduct: (product: Product) => void;
+  removeProduct: (productId: id) => void;
 };
 
 export const useCart = create<UseCart>()(
@@ -22,6 +26,13 @@ export const useCart = create<UseCart>()(
       addProduct: (product) => {
         set((state) => ({
           Products: [...state.Products, product],
+        }));
+      },
+      removeProduct: (productId) => {
+        set((state) => ({
+          Products: state.Products.filter(
+            (product) => product.id !== productId
+          ),
         }));
       },
     }),
