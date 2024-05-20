@@ -28,8 +28,8 @@ export const useUser = create<UserStore>()(
       },
     }),
     {
-      name: "user-storage", // name of the item in the storage (must be unique)
-      storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
+      name: "user-storage",
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );
