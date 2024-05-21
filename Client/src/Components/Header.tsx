@@ -23,7 +23,7 @@ const Header = () => {
   };
   useEffect(() => {
     const handleScroll = () => {
-      setIsProfileSideBarOpen(false); // Close the sidebar when scrolling
+      setIsProfileSideBarOpen(false);
     };
 
     window.addEventListener("scroll", handleScroll);
