@@ -13,7 +13,6 @@ import { useCart } from "../Hooks/useCart";
 const Header = () => {
   const user = useUser((state) => state.User);
   const products = useCart((state) => state.Products);
-  const [itemCount] = useState(10);
   const [isMenuOpen, setIsMenuOpen] = useState<Boolean>(false);
   const [isProfileSideBarOpen, setIsProfileSideBarOpen] =
     useState<Boolean>(false);
