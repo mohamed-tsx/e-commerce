@@ -13,6 +13,7 @@ import { useCart } from "../Hooks/useCart";
 const Header = () => {
   // Fetch user info from the zustand state
   const user = useUser((state) => state.User);
+  // Fetch products info from zustand state
   const products = useCart((state) => state.Products);
   const [isMenuOpen, setIsMenuOpen] = useState<Boolean>(false);
   const [isProfileSideBarOpen, setIsProfileSideBarOpen] =
