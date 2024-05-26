@@ -1,12 +1,15 @@
+import React from "react";
 import { useCart } from "../Hooks/useCart";
+import CartProduct from "./cartProduct";
 
 const CartProducts = () => {
   const cartProducts = useCart((state) => state.Products);
+
   return (
     <div>
       {cartProducts.map((cartProduct) => (
-        <div>
-          <p>{cartProduct.productName}</p>
+        <div key={cartProduct.id}>
+          <CartProduct {...cartProduct} />
         </div>
       ))}
     </div>
