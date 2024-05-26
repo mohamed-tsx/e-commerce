@@ -44,7 +44,7 @@ const allProducts = asyncHandler(async (req, res) => {
   });
 });
 
-const deleteProducts = asyncHandler(async (req, res) => {
+const deleteProduct = asyncHandler(async (req, res) => {
   // Fetch product id from request params
   const id = req.params.id;
 
@@ -77,4 +77,5 @@ const deleteProducts = asyncHandler(async (req, res) => {
 module.exports = {
   addProduct,
   allProducts,
+  deleteProduct,
 };
