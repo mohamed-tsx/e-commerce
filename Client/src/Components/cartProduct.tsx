@@ -16,11 +16,11 @@ const CartProduct = ({
   productPrice,
 }: ProductCartProps) => {
   return (
-    <div className="flex items-center border p-4 my-2">
+    <div className="flex items-center border p-4 my-2 rounded">
       <img
         src={imageUrl}
         alt={productName}
-        className="w-24 h-24 object-cover mr-4"
+        className="w-24 h-24 object-cover mr-4 rounded"
       />
       <div className="flex flex-col">
         <h3 className="text-lg font-bold">{productName}</h3>
@@ -28,7 +28,12 @@ const CartProduct = ({
         <p className="text-green-500 font-semibold">
           ${productPrice.toFixed(2)}
         </p>
-        <p className="text-gray-500 text-sm">Product ID: {id}</p>
+      </div>
+      <div className="flex ml-10 gap-4 items-center">
+        <button className="border p-3 rounded-md px-4 font-semibold">-</button>
+
+        <p>0</p>
+        <button className="border p-3 rounded-md px-4 font-semibold">+</button>
       </div>
     </div>
   );
