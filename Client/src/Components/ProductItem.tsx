@@ -20,6 +20,7 @@ const ProductItem = ({
   const addProducts = useCart((state) => state.addProduct);
   const allProducts = useCart((state) => state.Products);
   const [isProductInCart, setIsProductInCart] = useState(false);
+
   const currentProduct = {
     id,
     imageUrl,
@@ -27,25 +28,23 @@ const ProductItem = ({
     productName,
     productPrice,
   };
-  const handleAddingProductToCart = (productDetails: any) => {
-    allProducts.forEach((product) => {
-      if (productDetails.id !== product.id) {
-        addProducts(productDetails);
-      }
-    });
-  };
 
-  const checkIfProductIsAlreadyInCart = (productDetails: any) => {
-    allProducts.forEach((product) => {
-      if (productDetails.id !== product.id) {
-        setIsProductInCart(true);
-      }
-    });
+  const handleAddingProductToCart = (productDetails: any) => {
+    const productExists = allProducts.some(
+      (product) => product.id === productDetails.id
+    );
+    if (!productExists) {
+      addProducts(productDetails);
+      setIsProductInCart(true);
+    }
   };
 
   useEffect(() => {
-    checkIfProductIsAlreadyInCart(currentProduct);
-  }, []);
+    const productExists = allProducts.some(
+      (product) => product.id === currentProduct.id
+    );
+    setIsProductInCart(productExists);
+  }, [allProducts, currentProduct.id]);
 
   return (
     <div className="p-3 flex">
@@ -68,8 +67,7 @@ const ProductItem = ({
               {isProductInCart ? (
                 <button
                   className="px-7 py-2 bg-gray-400 text-white rounded-md"
-                  disabled={isProductInCart}
-                  // onClick={() => handleAddingProductToCart(currentProduct)}
+                  disabled
                 >
                   Already In Cart
                 </button>
