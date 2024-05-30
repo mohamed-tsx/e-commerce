@@ -1,5 +1,3 @@
-import React from "react";
-
 type ProductCartProps = {
   id: string;
   imageUrl: string;
@@ -9,7 +7,6 @@ type ProductCartProps = {
 };
 
 const CartProduct = ({
-  id,
   imageUrl,
   productDescription,
   productName,
