@@ -37,6 +37,12 @@ const CartProducts = () => {
                       <button className="bg-blue-600 text-white p-2 rounded-md">
                         Checkout
                       </button>
+                      <button
+                        onClick={() => navigate("/shop")}
+                        className="mt-3 flex items-center justify-end gap-3"
+                      >
+                        <BiArrowBack /> Continue Shopping
+                      </button>
                     </div>
                   </div>
                 </div>
