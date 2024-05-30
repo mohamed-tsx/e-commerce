@@ -40,7 +40,6 @@ export const useCart = create<UseCart>()(
         set(() => ({
           Products: [],
         }));
-        // localStorage.removeItem("product-storage");
       },
     }),
     {
