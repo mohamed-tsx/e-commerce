@@ -29,12 +29,12 @@ const CartProducts = () => {
                   </div>
                   <div className="flex flex-col">
                     <div className="flex items-center justify-between gap-14">
-                      <h1 className="font-medium text-xl">Subtotal: </h1>
-                      <h1 className="font-medium text-xl">${total}</h1>
+                      <h1 className="font-medium text-lg">Subtotal: </h1>
+                      <h1 className="font-medium text-lg">${total}</h1>
                     </div>
                     <div className="flex flex-col">
                       <p>Taxes and pay are included and alot</p>
-                      <button className="bg-blue-600 text-white p-2 rounded-md">
+                      <button className="bg-blue-600 text-white p-2 rounded-md mt-2">
                         Checkout
                       </button>
                       <button

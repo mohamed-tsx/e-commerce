@@ -1,3 +1,6 @@
+import { CgClose } from "react-icons/cg";
+import { useCart } from "../Hooks/useCart";
+
 type ProductCartProps = {
   id: string;
   imageUrl: string;
@@ -7,11 +10,13 @@ type ProductCartProps = {
 };
 
 const CartProduct = ({
+  id,
   imageUrl,
   productDescription,
   productName,
   productPrice,
 }: ProductCartProps) => {
+  const removerProduct = useCart((state) => state.removeProduct);
   return (
     <div className="flex items-center border p-4 my-2 rounded">
       <img
@@ -26,11 +31,22 @@ const CartProduct = ({
           ${productPrice.toFixed(2)}
         </p>
       </div>
-      <div className="flex ml-10 gap-4 items-center">
-        <button className="border p-3 rounded-md px-4 font-semibold">-</button>
+      <div className="flex justify-between items-center gap-10">
+        <div className="flex ml-10 gap-4 items-center">
+          <button className="border p-3 rounded-md px-4 font-semibold">
+            -
+          </button>
 
-        <p>0</p>
-        <button className="border p-3 rounded-md px-4 font-semibold">+</button>
+          <p>0</p>
+          <button className="border p-3 rounded-md px-4 font-semibold">
+            +
+          </button>
+        </div>
+        <div>
+          <button onClick={() => removerProduct(id)}>
+            <CgClose />
+          </button>
+        </div>
       </div>
     </div>
   );
