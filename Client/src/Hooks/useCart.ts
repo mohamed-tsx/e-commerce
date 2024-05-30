@@ -17,6 +17,7 @@ type UseCart = {
   Products: Product[];
   addProduct: (product: Product) => void;
   removeProduct: (productId: id) => void;
+  removeAllProducts: () => void;
 };
 
 export const useCart = create<UseCart>()(
@@ -35,9 +36,15 @@ export const useCart = create<UseCart>()(
           ),
         }));
       },
+      removeAllProducts: () => {
+        set(() => ({
+          Products: [],
+        }));
+        // localStorage.removeItem("product-storage");
+      },
     }),
     {
-      name: "product-storage", // name of the item in the storage (must be unique)
+      name: "product-storage", // name of the item in the storage
       storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
     }
   )

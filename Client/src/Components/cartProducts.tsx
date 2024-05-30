@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const CartProducts = () => {
   const cartProducts = useCart((state) => state.Products);
+  const clearAll = useCart((state) => state.removeAllProducts);
   const navigate = useNavigate();
 
   return (
@@ -13,7 +14,10 @@ const CartProducts = () => {
         cartProducts.map((cartProduct) => (
           <div key={cartProduct.id}>
             <CartProduct {...cartProduct} />
-            <button className="border py-2 px-10 border-black rounded-md">
+            <button
+              onClick={() => clearAll()}
+              className="border py-2 px-10 border-black rounded-md"
+            >
               Clear All
             </button>
           </div>
