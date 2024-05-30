@@ -17,6 +17,13 @@ const CartProduct = ({
   productPrice,
 }: ProductCartProps) => {
   const removerProduct = useCart((state) => state.removeProduct);
+  const currentProduct = {
+    id,
+    imageUrl,
+    productDescription,
+    productName,
+    productPrice,
+  };
   return (
     <div className="flex items-center border p-4 my-2 rounded">
       <img
@@ -43,7 +50,7 @@ const CartProduct = ({
           </button>
         </div>
         <div>
-          <button onClick={() => removerProduct(id)}>
+          <button onClick={() => removerProduct(currentProduct)}>
             <CgClose />
           </button>
         </div>

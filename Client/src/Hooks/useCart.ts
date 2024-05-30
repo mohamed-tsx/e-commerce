@@ -15,29 +15,32 @@ type id = string;
 type UseCart = {
   Products: Product[];
   addProduct: (product: Product) => void;
-  removeProduct: (productId: id) => void;
+  removeProduct: (product: Product) => void;
   removeAllProducts: () => void;
+  totalPrice: number;
 };
 
 export const useCart = create<UseCart>()(
   persist(
     (set, get) => ({
       Products: [],
-      addProduct: (product) => {
+      totalPrice: 0,
+      addProduct: (product: Product) => {
         set((state) => ({
           Products: [...state.Products, product],
+          totalPrice: state.totalPrice + product.productPrice,
         }));
       },
-      removeProduct: (productId) => {
+      removeProduct: (product: Product) => {
         set((state) => ({
-          Products: state.Products.filter(
-            (product) => product.id !== productId
-          ),
+          Products: state.Products.filter((item) => item.id !== product.id),
+          totalPrice: state.totalPrice - product.productPrice,
         }));
       },
       removeAllProducts: () => {
         set(() => ({
           Products: [],
+          totalPrice: 0,
         }));
       },
     }),
