@@ -13,6 +13,9 @@ const CartProducts = () => {
         cartProducts.map((cartProduct) => (
           <div key={cartProduct.id}>
             <CartProduct {...cartProduct} />
+            <button className="border py-2 px-10 border-black rounded-md">
+              Clear All
+            </button>
           </div>
         ))
       ) : (
