@@ -9,8 +9,6 @@ interface Product {
   productPrice: number;
 }
 
-type id = string;
-
 // Use cart
 type UseCart = {
   Products: Product[];
@@ -22,7 +20,7 @@ type UseCart = {
 
 export const useCart = create<UseCart>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       Products: [],
       totalPrice: 0,
       addProduct: (product: Product) => {
