@@ -43,8 +43,8 @@ export const useCart = create<UseCart>()(
       },
     }),
     {
-      name: "product-storage", // name of the item in the storage
-      storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
+      name: "product-storage",
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );
