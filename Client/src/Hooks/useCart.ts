@@ -19,6 +19,7 @@ type UseCart = {
   totalPrice: number;
   totalItems: number;
   addQuantity: (product: Product) => void;
+  decrementQuantity: (product: Product) => void;
 };
 
 export const useCart = create<UseCart>()(
@@ -62,6 +63,22 @@ export const useCart = create<UseCart>()(
             Products: updatedCart,
             totalPrice: state.totalPrice + product.productPrice,
             totalItems: state.totalItems + 1,
+          }));
+        }
+      },
+      decrementQuantity: (product) => {
+        const cart = get().Products;
+        const cartItem = cart.find((item) => item.id === product.id);
+        if (cartItem) {
+          const updatedCart = cart.map((item) =>
+            item.id === product.id
+              ? { ...item, quantity: (item.quantity as number) - 1 }
+              : item
+          );
+          set((state) => ({
+            Products: updatedCart,
+            totalPrice: state.totalPrice + product.productPrice,
+            totalItems: state.totalItems - 1,
           }));
         }
       },
