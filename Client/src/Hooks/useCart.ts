@@ -7,6 +7,7 @@ interface Product {
   productDescription: string;
   productName: string;
   productPrice: number;
+  quantity: number;
 }
 
 // Use cart
@@ -16,16 +17,18 @@ type UseCart = {
   removeProduct: (product: Product) => void;
   removeAllProducts: () => void;
   totalPrice: number;
+  addQuantity: (product: Product) => void;
 };
 
 export const useCart = create<UseCart>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       Products: [],
       totalPrice: 0,
       addProduct: (product: Product) => {
+        const cart = get().Products;
         set((state) => ({
-          Products: [...state.Products, product],
+          Products: [...cart, { ...product, quantity: 1 }],
           totalPrice: state.totalPrice + product.productPrice,
         }));
       },
@@ -40,6 +43,21 @@ export const useCart = create<UseCart>()(
           Products: [],
           totalPrice: 0,
         }));
+      },
+      addQuantity: (product) => {
+        const cart = get().Products;
+        const cartItem = cart.find((item) => item.id === product.id);
+        if (cartItem) {
+          const updatedCart = cart.map((item) =>
+            item.id === product.id
+              ? { ...item, quantity: (item.quantity as number) + 1 }
+              : item
+          );
+          set((state) => ({
+            Products: updatedCart,
+            totalPrice: state.totalPrice + product.productPrice,
+          }));
+        }
       },
     }),
     {

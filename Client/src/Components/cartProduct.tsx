@@ -7,6 +7,7 @@ type ProductCartProps = {
   productDescription: string;
   productName: string;
   productPrice: number;
+  quantity: number;
 };
 
 const CartProduct = ({
@@ -15,14 +16,17 @@ const CartProduct = ({
   productDescription,
   productName,
   productPrice,
+  quantity,
 }: ProductCartProps) => {
   const removerProduct = useCart((state) => state.removeProduct);
+  const addQuantity = useCart((state) => state.addQuantity);
   const currentProduct = {
     id,
     imageUrl,
     productDescription,
     productName,
     productPrice,
+    quantity,
   };
   return (
     <div className="flex items-center border p-4 my-2 rounded">
@@ -44,8 +48,11 @@ const CartProduct = ({
             -
           </button>
 
-          <p>0</p>
-          <button className="border p-3 rounded-md px-4 font-semibold">
+          <p>{quantity}</p>
+          <button
+            className="border p-3 rounded-md px-4 font-semibold"
+            onClick={() => addQuantity(currentProduct)}
+          >
             +
           </button>
         </div>

@@ -7,6 +7,7 @@ type Product = {
   productDescription: string;
   productName: string;
   productPrice: number;
+  quantity: number;
 };
 
 const AllProducts = () => {
