@@ -33,13 +33,13 @@ const CartProducts = () => {
                 <h1 className="font-medium text-lg">${total}</h1>
               </div>
               <div className="flex flex-col">
-                <p>Taxes and pay are included and alot</p>
+                <p>Taxes and Shipping calculated at checkout</p>
                 <button className="bg-blue-600 text-white p-2 rounded-md mt-2">
                   Checkout
                 </button>
                 <button
                   onClick={() => navigate("/shop")}
-                  className="mt-3 flex items-center justify-end gap-3"
+                  className="mt-3 flex items-center justify-start gap-3"
                 >
                   <BiArrowBack /> Continue Shopping
                 </button>
