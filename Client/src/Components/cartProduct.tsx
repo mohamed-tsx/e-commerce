@@ -20,6 +20,7 @@ const CartProduct = ({
 }: ProductCartProps) => {
   const removerProduct = useCart((state) => state.removeProduct);
   const addQuantity = useCart((state) => state.addQuantity);
+  const decrementQuantity = useCart((state) => state.decrementQuantity);
   const currentProduct = {
     id,
     imageUrl,
@@ -44,7 +45,10 @@ const CartProduct = ({
       </div>
       <div className="flex justify-between items-center gap-10">
         <div className="flex ml-10 gap-4 items-center">
-          <button className="border p-3 rounded-md px-4 font-semibold">
+          <button
+            className="border p-3 rounded-md px-4 font-semibold"
+            onClick={() => decrementQuantity(currentProduct)}
+          >
             -
           </button>
 
