@@ -35,7 +35,8 @@ export const useCart = create<UseCart>()(
       removeProduct: (product: Product) => {
         set((state) => ({
           Products: state.Products.filter((item) => item.id !== product.id),
-          totalPrice: state.totalPrice - product.productPrice,
+          totalPrice:
+            state.totalPrice - product.productPrice * product.quantity,
         }));
       },
       removeAllProducts: () => {
