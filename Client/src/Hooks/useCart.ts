@@ -48,6 +48,7 @@ export const useCart = create<UseCart>()(
         set(() => ({
           Products: [],
           totalPrice: 0,
+          totalItems: 0,
         }));
       },
       addQuantity: (product) => {
