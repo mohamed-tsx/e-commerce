@@ -8,6 +8,7 @@ const CartProducts = () => {
   const clearAll = useCart((state) => state.removeAllProducts);
   const navigate = useNavigate();
   const total = useCart((state) => state.totalPrice);
+  const totalItems = useCart((state) => state.totalItems);
 
   return (
     <div>
@@ -26,6 +27,10 @@ const CartProducts = () => {
               >
                 Clear All
               </button>
+              <p>
+                You have {totalItems} {totalItems > 1 ? "Items" : "Item"} in
+                your cart
+              </p>
             </div>
             <div className="flex flex-col">
               <div className="flex items-center justify-between gap-14">
