@@ -17,6 +17,7 @@ type UseCart = {
   removeProduct: (product: Product) => void;
   removeAllProducts: () => void;
   totalPrice: number;
+  totalItems: number;
   addQuantity: (product: Product) => void;
 };
 
@@ -25,16 +26,19 @@ export const useCart = create<UseCart>()(
     (set, get) => ({
       Products: [],
       totalPrice: 0,
+      totalItems: 0,
       addProduct: (product: Product) => {
         const cart = get().Products;
         set((state) => ({
           Products: [...cart, { ...product, quantity: 1 }],
+          totalItems: state.totalItems + 1,
           totalPrice: state.totalPrice + product.productPrice,
         }));
       },
       removeProduct: (product: Product) => {
         set((state) => ({
           Products: state.Products.filter((item) => item.id !== product.id),
+          totalItems: state.totalItems - product.quantity,
           totalPrice:
             state.totalPrice - product.productPrice * product.quantity,
         }));
@@ -57,6 +61,7 @@ export const useCart = create<UseCart>()(
           set((state) => ({
             Products: updatedCart,
             totalPrice: state.totalPrice + product.productPrice,
+            totalItems: state.totalItems + 1,
           }));
         }
       },
