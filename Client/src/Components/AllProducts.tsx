@@ -9,7 +9,6 @@ type Product = {
   productPrice: number;
   quantity: number;
 };
-
 const AllProducts = () => {
   const url = "/api/products/allProducts";
   const [error, setError] = useState("");
