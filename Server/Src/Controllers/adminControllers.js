@@ -1,6 +1,10 @@
 const asyncHandler = require("express-async-handler");
 const Prisma = require("../Config/Prisma");
 
+// @Description: Promote a normal user to a admin user
+// @Route: "/promote-to-admin/:id"
+// @Method POST
+// @Access: Private
 const PromoteToAdmin = asyncHandler(async (req, res) => {
   // Fetch the id from params
   const id = req.params.id;
