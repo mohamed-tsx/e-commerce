@@ -58,22 +58,22 @@ const ProductItem = ({
             objectFit: "cover",
           }}
         />
-        <div className="p-6 flex flex-col">
-          <h3 className="text-xl font-bold mb-2">{productName}</h3>
+        <div className="p-5 flex flex-col">
+          <h3 className="text-lg font-bold mb-2">{productName}</h3>
           <p className="text-gray-500 mb-4">{productDescription}</p>
           <div className="flex items-center justify-between mt-auto">
-            <span className="text-2xl font-bold">${productPrice}</span>
+            <span className="text-xl font-bold">${productPrice}</span>
             <div className="flex items-center gap-2">
               {isProductInCart ? (
                 <button
-                  className="px-7 py-2 bg-gray-400 text-white rounded-md"
-                  disabled
+                  className="px-5 py-2 bg-gray-400 text-white rounded-md"
+                  disabled={true}
                 >
                   Already In Cart
                 </button>
               ) : (
                 <button
-                  className="px-7 py-2 bg-black text-white rounded-md"
+                  className="px-5 py-2 bg-black text-white rounded-md"
                   onClick={() => handleAddingProductToCart(currentProduct)}
                 >
                   Add to Cart
