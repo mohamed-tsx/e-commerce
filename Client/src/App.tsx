@@ -5,6 +5,7 @@ import SignUp from "./Pages/Auth Pages/SignUp";
 import SignIn from "./Pages/Auth Pages/SignIn";
 import Shop from "./Pages/Shop Page/Shop";
 import Cart from "./Pages/Cart Page/Cart";
+import Checkout from "./Pages/Checkout Page/Checkout";
 export default function App() {
   return (
     <div className="px-16 py-6">
@@ -16,7 +17,7 @@ export default function App() {
         <Route path="/login" element={<SignIn />} />
         <Route path="/profile" element={<h1>Profile Page</h1>} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/checkout" element={<>Hi This is checkout page</>} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </div>
   );
