@@ -78,7 +78,7 @@ const Header = () => {
         ) : (
           <div className="items-center gap-4 hidden lg:flex">
             <Link
-              to="/signin"
+              to="/login"
               className="p-1 px-4 text-center bg-black text-white rounded-full"
             >
               Login
