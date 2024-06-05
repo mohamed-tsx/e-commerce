@@ -39,7 +39,10 @@ const CartProducts = () => {
               </div>
               <div className="flex flex-col">
                 <p>Taxes and Shipping calculated at checkout</p>
-                <button className="bg-blue-600 text-white p-2 rounded-md mt-2">
+                <button
+                  className="bg-blue-600 text-white p-2 rounded-md mt-2"
+                  onClick={() => navigate("/checkout")}
+                >
                   Checkout
                 </button>
                 <button
