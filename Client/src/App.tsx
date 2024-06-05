@@ -16,6 +16,7 @@ export default function App() {
         <Route path="/login" element={<SignIn />} />
         <Route path="/profile" element={<h1>Profile Page</h1>} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/checkout" element={<>Hi This is checkout page</>} />
       </Routes>
     </div>
   );
