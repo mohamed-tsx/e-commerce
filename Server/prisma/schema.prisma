@@ -25,7 +25,6 @@ model User {
   role     userRoles @default(regular)
   photo    String?   @default("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
   password String
-  Cart     Cart[]
 }
 
 model Product {
@@ -35,21 +34,4 @@ model Product {
   productDescription String
   imageUrl           String?    @default("https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg")
   quantity           Int
-  CartItem           CartItem[]
-}
-
-model Cart {
-  id        String     @id @default(uuid())
-  userId    String     @unique
-  user      User       @relation(fields: [userId], references: [id])
-  cartItems CartItem[]
-}
-
-model CartItem {
-  id        String  @id @default(uuid())
-  cartId    String
-  Cart      Cart    @relation(fields: [cartId], references: [id])
-  productId String
-  product   Product @relation(fields: [productId], references: [id])
-  quantity  Int
 }
