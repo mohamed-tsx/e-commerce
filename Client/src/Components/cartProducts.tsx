@@ -43,7 +43,7 @@ const CartProducts = () => {
                   className="bg-blue-600 text-white p-2 rounded-md mt-2"
                   onClick={() => navigate("/checkout")}
                 >
-                  Checkout
+                  Secure Checkout
                 </button>
                 <button
                   onClick={() => navigate("/shop")}
