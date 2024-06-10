@@ -1,3 +1,6 @@
+import { BiArrowBack } from "react-icons/bi";
+import { IoArrowForward } from "react-icons/io5";
+
 // List of countries
 const countries = [
   { name: "Afghanistan", code: "AF" },
@@ -197,7 +200,63 @@ const countries = [
 const Checkout = () => {
   return (
     <div className="flex flex-col mt-12">
-      <p className="text-center">Information</p>
+      <div
+        className="flex items-center justify-center mb-12
+      "
+      >
+        <h2 className="sr-only">Steps</h2>
+
+        <div>
+          <ol className="flex items-center gap-2 text-xs font-medium text-gray-500 sm:gap-4">
+            <li className="flex items-center">
+              <span className="size-6 rounded bg-blue-50 text-center text-[10px]/6 font-bold">
+                {" "}
+                1{" "}
+              </span>
+
+              <span> Cart </span>
+              <span className="rounded bg-green-50 p-1.5 text-green-600">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-3 w-3"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </span>
+            </li>
+
+            <li className="flex items-center justify-center gap-2 text-blue-600">
+              <span className="size-6 rounded bg-blue-50 text-center text-[10px]/6 font-bold">
+                {" "}
+                2{" "}
+              </span>
+
+              <span> Address </span>
+            </li>
+
+            <li className="flex items-center justify-end gap-2">
+              <span className="size-6 rounded bg-gray-50 text-center text-[10px]/6 font-bold text-gray-600">
+                3
+              </span>
+
+              <span> Shipping </span>
+            </li>
+            <li className="flex items-center justify-end gap-2">
+              <span className="size-6 rounded bg-gray-50 text-center text-[10px]/6 font-bold text-gray-600">
+                4
+              </span>
+
+              <span> Payment </span>
+            </li>
+          </ol>
+        </div>
+      </div>
       <div className="flex">
         <div className="w-1/2">
           <div className="text-xs">
@@ -245,7 +304,59 @@ const Checkout = () => {
               />
             </div>
           </div>
+          <div className="text-xs mt-2">
+            <input
+              type="text"
+              name="address"
+              id="address"
+              placeholder="Address"
+              className="w-1/2 p-2 border-gray-400 rounded-md border-2 mt-2"
+            />
+          </div>
+          <div className="text-xs mt-2">
+            <input
+              type="text"
+              name="appartment"
+              id="appartment"
+              placeholder="Appartment, suite, etc (Optional)"
+              className="w-1/2 p-2 border-gray-400 rounded-md border-2 mt-2"
+            />
+          </div>
+          <div className="flex space-x-2 mt-4 text-xs">
+            <input
+              type="text"
+              name="city"
+              id="city"
+              placeholder="City"
+              className="w-1/4 p-2 border-gray-400 rounded-md border-2"
+            />
+            <input
+              type="text"
+              name="postalCode"
+              id="postalCode"
+              placeholder="Postal Code"
+              className="w-1/4 p-2 border-gray-400 rounded-md border-2"
+            />
+          </div>
+          <div className="text-xs mt-2">
+            <input
+              type="text"
+              name="phone"
+              id="phone"
+              placeholder="Phone"
+              className="w-1/2 p-2 border-gray-400 rounded-md border-2 mt-2"
+            />
+          </div>
+          <div className="flex items-center justify-between w-1/2">
+            <button className=" flex text-xs items-center gap-3 mt-5">
+              <BiArrowBack /> Return To Cart
+            </button>
+            <button className=" flex text-xs items-center gap-3 mt-5 bg-black text-white p-3 rounded-md">
+              Continue to Shipping <IoArrowForward />
+            </button>
+          </div>
         </div>
+
         <div className="bg-black w-1/2 h-screen"></div>
       </div>
     </div>
