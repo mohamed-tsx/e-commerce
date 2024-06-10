@@ -1,5 +1,6 @@
 import { CgClose } from "react-icons/cg";
 import { useCart } from "../Hooks/useCart";
+import { BiTrash } from "react-icons/bi";
 
 type ProductCartProps = {
   id: string;
@@ -62,7 +63,7 @@ const CartProduct = ({
         </div>
         <div>
           <button onClick={() => removerProduct(currentProduct)}>
-            <CgClose />
+            <BiTrash />
           </button>
         </div>
       </div>

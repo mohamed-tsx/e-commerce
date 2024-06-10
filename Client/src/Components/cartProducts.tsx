@@ -47,7 +47,7 @@ const CartProducts = () => {
                 </button>
                 <button
                   onClick={() => navigate("/shop")}
-                  className="mt-3 flex items-center justify-start gap-3"
+                  className="mt-3 flex items-center justify-start gap-3 text-sm"
                 >
                   <BiArrowBack /> Continue Shopping
                 </button>
