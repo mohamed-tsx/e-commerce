@@ -1,4 +1,3 @@
-import { CgClose } from "react-icons/cg";
 import { useCart } from "../Hooks/useCart";
 import { BiTrash } from "react-icons/bi";
 
