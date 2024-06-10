@@ -2,6 +2,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { useCart } from "../Hooks/useCart";
 import CartProduct from "./cartProduct";
 import { useNavigate } from "react-router-dom";
+import { useCheckout } from "../Hooks/useCheckout";
 
 const CartProducts = () => {
   const cartProducts = useCart((state) => state.Products);
@@ -9,6 +10,9 @@ const CartProducts = () => {
   const navigate = useNavigate();
   const total = useCart((state) => state.totalPrice);
   const totalItems = useCart((state) => state.totalItems);
+  const changeStageToAdress = useCheckout(
+    (state) => state.changeStageToAddress
+  );
 
   return (
     <div>
@@ -41,7 +45,10 @@ const CartProducts = () => {
                 <p>Taxes and Shipping calculated at checkout</p>
                 <button
                   className="bg-blue-600 text-white p-2 rounded-md mt-2"
-                  onClick={() => navigate("/checkout")}
+                  onClick={() => {
+                    navigate("/checkout");
+                    changeStageToAdress();
+                  }}
                 >
                   Secure Checkout
                 </button>

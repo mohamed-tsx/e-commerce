@@ -14,7 +14,7 @@ type CheckoutState = {
 export const useCheckout = create<CheckoutState>()(
   persist(
     (set) => ({
-      stage: "Payment",
+      stage: "Address",
       changeStageToCart: () => set({ stage: "Cart" }),
       changeStageToAddress: () => set({ stage: "Address" }),
       changeStageToShipping: () => set({ stage: "Shipping" }),
