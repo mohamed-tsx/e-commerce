@@ -1,8 +1,10 @@
 import { BiArrowBack } from "react-icons/bi";
 import { IoArrowForward } from "react-icons/io5";
 import countries from "../Lib/Countries";
+import { useCheckout } from "../Hooks/useCheckout";
 
 const Information = () => {
+  const { changeStageToShipping } = useCheckout();
   return (
     <div className="w-1/2">
       <div className="text-xs">
@@ -97,7 +99,10 @@ const Information = () => {
         <button className=" flex text-xs items-center gap-3 mt-5">
           <BiArrowBack /> Return To Cart
         </button>
-        <button className=" flex text-xs items-center gap-3 mt-5 bg-black text-white p-3 rounded-md">
+        <button
+          className=" flex text-xs items-center gap-3 mt-5 bg-black text-white p-3 rounded-md"
+          onClick={() => changeStageToShipping()}
+        >
           Continue to Shipping <IoArrowForward />
         </button>
       </div>
