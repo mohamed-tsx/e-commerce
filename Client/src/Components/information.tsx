@@ -1,7 +1,8 @@
 import { BiArrowBack } from "react-icons/bi";
 import { IoArrowForward } from "react-icons/io5";
+import countries from "../Lib/Countries";
 
-const information = () => {
+const Information = () => {
   return (
     <div className="w-1/2">
       <div className="text-xs">
@@ -104,4 +105,4 @@ const information = () => {
   );
 };
 
-export default information;
+export default Information;
