@@ -86,7 +86,7 @@ const Information = () => {
       </div>
       <div className="text-xs mt-2">
         <input
-          type="text"
+          type="tel"
           name="phone"
           id="phone"
           placeholder="Phone"
