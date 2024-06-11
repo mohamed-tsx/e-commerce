@@ -18,7 +18,7 @@ interface formDataType {
 }
 
 const Information = () => {
-  const { changeStageToShipping } = useCheckout();
+  const { changeStageToShipping, setCheckoutInfo } = useCheckout();
   const [error, setError] = useState<string>("");
   const navigate = useNavigate();
   const [formData, setFormData] = useState<formDataType>({
@@ -63,6 +63,7 @@ const Information = () => {
     }
     setError("");
     console.log(formData);
+    setCheckoutInfo(formData);
     // changeStageToShipping();
   };
   return (
