@@ -64,7 +64,7 @@ const Information = () => {
     setError("");
     console.log(formData);
     setCheckoutInfo(formData);
-    // changeStageToShipping();
+    changeStageToShipping();
   };
   return (
     <form className="w-1/2" onSubmit={handleSubmit}>
