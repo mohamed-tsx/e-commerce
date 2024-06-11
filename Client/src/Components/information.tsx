@@ -2,9 +2,11 @@ import { BiArrowBack } from "react-icons/bi";
 import { IoArrowForward } from "react-icons/io5";
 import countries from "../Lib/Countries";
 import { useCheckout } from "../Hooks/useCheckout";
+import { useNavigate } from "react-router-dom";
 
 const Information = () => {
   const { changeStageToShipping } = useCheckout();
+  const navigate = useNavigate();
   return (
     <div className="w-1/2">
       <div className="text-xs">
@@ -96,7 +98,10 @@ const Information = () => {
         />
       </div>
       <div className="flex items-center justify-between w-1/2">
-        <button className=" flex text-xs items-center gap-3 mt-5">
+        <button
+          className=" flex text-xs items-center gap-3 mt-5"
+          onClick={() => navigate("/cart")}
+        >
           <BiArrowBack /> Return To Cart
         </button>
         <button
