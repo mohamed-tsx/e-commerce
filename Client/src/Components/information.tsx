@@ -66,6 +66,8 @@ const Information = () => {
     setCheckoutInfo(formData);
     changeStageToShipping();
   };
+
+  
   return (
     <form className="w-1/2" onSubmit={handleSubmit}>
       <div className="text-xs">

@@ -45,7 +45,7 @@ export const useCheckout = create<CheckoutState>()(
       changeStageToShipping: () => set({ stage: "Shipping" }),
       changeStageToPayment: () => set({ stage: "Payment" }),
       setCheckoutInfo: (info) => {
-        set((state) => ({
+        set(() => ({
           checkoutInfo: info,
         }));
       },
