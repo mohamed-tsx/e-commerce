@@ -67,9 +67,8 @@ const Information = () => {
     changeStageToShipping();
   };
 
-  
   return (
-    <form className="w-1/2" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div className="text-xs">
         <label htmlFor="email" className="block">
           Contact
