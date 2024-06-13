@@ -1,5 +1,4 @@
 import { useCheckout } from "../Hooks/useCheckout";
-
 const Shipping = () => {
   const { checkoutInfo } = useCheckout();
   return (
@@ -15,12 +14,16 @@ const Shipping = () => {
             <p className="text-gray-500">Address </p>
 
             <p>
-              {checkoutInfo.address}, {checkoutInfo.city},{" "}
-              {checkoutInfo.apartment}, {checkoutInfo.postalCode}
+              {checkoutInfo.address}, {checkoutInfo.apartment},{" "}
+              {checkoutInfo.city}, {checkoutInfo.postalCode}
               {", "}
               {checkoutInfo.selectedCountry}
             </p>
           </div>
+        </div>
+        <div className="mt-20">
+          <p className="uppercase font-semibold">Shipping Method</p>
+          <hr className="mt-2" />
         </div>
       </div>
     </div>
