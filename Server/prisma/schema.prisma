@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -28,10 +22,28 @@ model User {
 }
 
 model Product {
-  id                 String     @id @default(uuid())
+  id                 String      @id @default(uuid())
   productName        String
   productPrice       Float
   productDescription String
-  imageUrl           String?    @default("https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg")
+  imageUrl           String?     @default("https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg")
   quantity           Int
+  OrderItems         OrderItem[]
+}
+
+model Order {
+  id        String      @id @default(uuid())
+  products  OrderItem[]
+  Address   String
+  email     String
+  createdAt DateTime    @default(now())
+}
+
+model OrderItem {
+  id        String  @id @default(uuid())
+  order     Order   @relation(fields: [orderId], references: [id])
+  orderId   String
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+  quantity  Int
 }
