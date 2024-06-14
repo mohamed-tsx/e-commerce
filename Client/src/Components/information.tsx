@@ -159,7 +159,7 @@ const Information = () => {
           type="text"
           name="postalCode"
           id="postalCode"
-          value={formData.city}
+          value={formData.postalCode}
           onChange={handleChange}
           placeholder="Postal Code"
           className="w-1/4 p-2 border-gray-400 rounded-md border-2"
