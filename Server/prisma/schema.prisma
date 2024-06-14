@@ -33,9 +33,11 @@ model Product {
 
 model Order {
   id        String      @id @default(uuid())
-  products  OrderItem[]
+  items     OrderItem[]
   Address   String
+  status    OrderStatus @default(PENDING)
   email     String
+  total     Float
   createdAt DateTime    @default(now())
 }
 
@@ -46,4 +48,14 @@ model OrderItem {
   product   Product @relation(fields: [productId], references: [id])
   productId String
   quantity  Int
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  RETURNED
+  REFUNDED
 }
