@@ -4,6 +4,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 
 const Payment = () => {
   const { checkoutInfo, shippingMethod } = useCheckout();
+  const [validPhoneNumber, setValidPhoneNumber] = useState<string>("");
   const [formData, setFormData] = useState({
     paymentMethod: "EVCPLUS", // Default to EVCPLUS
     phoneNumber: "",
@@ -19,6 +20,16 @@ const Payment = () => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
+
+    //Validation
+    if (
+      formData.paymentMethod === "EVCPLUS" &&
+      !formData.phoneNumber.startsWith("61")
+    ) {
+      setValidPhoneNumber("Enter Valid Number");
+      return;
+    }
+    setValidPhoneNumber("");
     // Simulate payment processing
     console.log("Payment Method:", formData.paymentMethod);
     console.log("Phone Number:", formData.phoneNumber);
@@ -152,6 +163,9 @@ const Payment = () => {
             }`}
             className="p-2 border-gray-400 rounded-md border-2 mt-2 w-full"
           />
+          {validPhoneNumber && (
+            <p className="text-sm text-red-500">{validPhoneNumber}</p>
+          )}
         </div>
       </div>
       <div className="flex items-center justify-between">
