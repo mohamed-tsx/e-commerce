@@ -46,6 +46,7 @@ const Payment = () => {
       setValidPhoneNumber("Enter a valid SAHAL number (63XXXXXXX)");
       return;
     }
+
     setValidPhoneNumber("");
 
     // Simulate payment processing
