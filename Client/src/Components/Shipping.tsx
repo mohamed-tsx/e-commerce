@@ -49,19 +49,19 @@ const Shipping = () => {
           <p className="uppercase font-semibold">Shipping Method</p>
           <hr className="mt-2" />
           <fieldset className="space-y-4">
-            <legend className="sr-only">Delivery</legend>
+            <legend className="sr-only">Shipping</legend>
             <div>
               <label
-                htmlFor="DeliveryStandard"
+                htmlFor="ShippingStandard"
                 className="flex cursor-pointer items-center justify-between gap-4 rounded-lg border border-gray-100 bg-white p-4 text-sm font-medium shadow-sm hover:border-gray-200 has-[:checked]:border-black has-[:checked]:ring-1 has-[:checked]:ring-black"
               >
                 <p className="text-gray-700">Standard {"(5-7) Days"}</p>
                 <p className="text-gray-900">$5.00</p>
                 <input
                   type="radio"
-                  name="DeliveryOption"
+                  name="ShippingOption"
                   value="standard"
-                  id="DeliveryStandard"
+                  id="ShippingStandard"
                   className="sr-only"
                   checked={formData.shippingMethod === "standard"}
                   onChange={handleChange}
@@ -70,16 +70,16 @@ const Shipping = () => {
             </div>
             <div>
               <label
-                htmlFor="DeliveryPriority"
+                htmlFor="ShippingPriority"
                 className="flex cursor-pointer items-center justify-between gap-4 rounded-lg border border-gray-100 bg-white p-4 text-sm font-medium shadow-sm hover:border-gray-200 has-[:checked]:border-black has-[:checked]:ring-1 has-[:checked]:ring-black"
               >
                 <p className="text-gray-700">Rush {"(2-3) Days"}</p>
                 <p className="text-gray-900">$15.00</p>
                 <input
                   type="radio"
-                  name="DeliveryOption"
+                  name="ShippingOption"
                   value="rush"
-                  id="DeliveryPriority"
+                  id="ShippingPriority"
                   className="sr-only"
                   checked={formData.shippingMethod === "rush"}
                   onChange={handleChange}
