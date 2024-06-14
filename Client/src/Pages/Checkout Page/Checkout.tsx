@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Information from "../../Components/information";
 import { useCheckout } from "../../Hooks/useCheckout";
 import Shipping from "../../Components/Shipping";
+import Payment from "../../Components/Payment";
 const Checkout = () => {
   const stage = useCheckout((state) => state.stage);
   useEffect(() => {
@@ -114,7 +115,7 @@ const Checkout = () => {
           {stage === "Address" ? (
             <Information />
           ) : stage === "Payment" ? (
-            <p className="w-1/2">Payment</p>
+            <Payment />
           ) : stage === "Shipping" ? (
             <Shipping />
           ) : null}
