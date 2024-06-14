@@ -131,6 +131,26 @@ const Payment = () => {
             </div>
           </fieldset>
         </div>
+        <div className="mt-6">
+          <label htmlFor="email" className="block text-xs">
+            Enter the phone number that you wanna send the money from
+          </label>
+          <input
+            type="email"
+            // value={formData.email}
+            // onChange={handleChange}
+            name="email"
+            id="email"
+            placeholder={`${
+              formData.paymentMethod === "EVCPLUS"
+                ? "61XXXXXXX"
+                : formData.paymentMethod === "ZAAD"
+                ? "69XXXXXXX"
+                : "63XXXXXXX"
+            }`}
+            className="p-2 border-gray-400 rounded-md border-2 mt-2"
+          />
+        </div>
       </div>
     </form>
   );
