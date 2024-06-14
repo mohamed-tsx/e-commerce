@@ -4,6 +4,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 
 const Payment = () => {
   const { checkoutInfo, shippingMethod } = useCheckout();
+  const [validPhoneNumber, setValidPhoneNumber] = useState<string>("");
   const [formData, setFormData] = useState({
     paymentMethod: "EVCPLUS", // Default to EVCPLUS
     phoneNumber: "",
@@ -19,6 +20,34 @@ const Payment = () => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
+
+    // Validate phone number based on payment method
+    if (
+      formData.paymentMethod === "EVCPLUS" &&
+      (!formData.phoneNumber.startsWith("61") ||
+        formData.phoneNumber.length !== 9)
+    ) {
+      setValidPhoneNumber("Enter a valid EVCPLUS number (61XXXXXXX)");
+      return;
+    }
+    if (
+      formData.paymentMethod === "ZAAD" &&
+      (!formData.phoneNumber.startsWith("69") ||
+        formData.phoneNumber.length !== 9)
+    ) {
+      setValidPhoneNumber("Enter a valid ZAAD number (69XXXXXXX)");
+      return;
+    }
+    if (
+      formData.paymentMethod === "SAHAL" &&
+      (!formData.phoneNumber.startsWith("63") ||
+        formData.phoneNumber.length !== 9)
+    ) {
+      setValidPhoneNumber("Enter a valid SAHAL number (63XXXXXXX)");
+      return;
+    }
+    setValidPhoneNumber("");
+
     // Simulate payment processing
     console.log("Payment Method:", formData.paymentMethod);
     console.log("Phone Number:", formData.phoneNumber);
@@ -152,6 +181,9 @@ const Payment = () => {
             }`}
             className="p-2 border-gray-400 rounded-md border-2 mt-2 w-full"
           />
+          {validPhoneNumber && (
+            <p className="text-sm text-red-500">{validPhoneNumber}</p>
+          )}
         </div>
       </div>
       <div className="flex items-center justify-between">
