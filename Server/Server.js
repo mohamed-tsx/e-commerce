@@ -12,6 +12,7 @@ const Server = express();
 Server.use(express.json());
 Server.use(express.urlencoded({ extended: true }));
 
+
 // Add cookie parser middleware before other routes and middleware
 Server.use(cookieParser());
 
