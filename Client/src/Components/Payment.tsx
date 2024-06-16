@@ -1,9 +1,11 @@
 import { BiArrowBack } from "react-icons/bi";
 import { useCheckout } from "../Hooks/useCheckout";
 import { useState, ChangeEvent, FormEvent } from "react";
+import { useCart } from "../Hooks/useCart";
 
 const Payment = () => {
   const { checkoutInfo, shippingMethod } = useCheckout();
+  const { shippingPrice } = useCart();
   const [validPhoneNumber, setValidPhoneNumber] = useState<string>("");
   const [formData, setFormData] = useState({
     paymentMethod: "EVCPLUS", // Default to EVCPLUS
@@ -77,7 +79,8 @@ const Payment = () => {
           <div className="flex gap-10">
             <p className="text-gray-500">Shipping Method</p>
             <p className="first-letter:uppercase">
-              <span className="text-gray-600">{shippingMethod}</span> $5.00
+              <span className="text-gray-600">{shippingMethod}</span> $
+              {shippingPrice}
             </p>
           </div>
         </div>
