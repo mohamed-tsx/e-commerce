@@ -29,7 +29,7 @@ const CheckoutProduct = ({
         </div>
         <p>{productName}</p>
       </div>
-      <p>${productPrice}</p>
+      <p>${productPrice * quantity}</p>
     </div>
   );
 };
