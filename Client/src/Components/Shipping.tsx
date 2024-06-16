@@ -1,12 +1,14 @@
 import { BiArrowBack } from "react-icons/bi";
 import { IoArrowForward } from "react-icons/io5";
 import { useCheckout } from "../Hooks/useCheckout";
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../Hooks/useCart";
 
 const Shipping = () => {
   const { checkoutInfo, setShippingMethod, changeStageToPayment } =
     useCheckout();
+  const { setShippingPrice } = useCart();
   const [formData, setFormData] = useState({
     shippingMethod: "standard", // Default to standard shipping
   });
@@ -21,10 +23,21 @@ const Shipping = () => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
+    // Set the shipping price based on the selected shipping method
+    if (formData.shippingMethod === "standard") {
+      setShippingPrice(5);
+    } else {
+      setShippingPrice(15);
+    }
     // Update shipping method in checkout info
     setShippingMethod(formData.shippingMethod);
     changeStageToPayment();
   };
+
+  useEffect(() => {
+    // Set the initial shipping price when the component mounts
+    setShippingPrice(formData.shippingMethod === "standard" ? 5 : 15);
+  }, [formData.shippingMethod, setShippingPrice]);
 
   return (
     <form className="px-12 py-2" onSubmit={handleSubmit}>

@@ -10,7 +10,6 @@ interface Product {
   quantity: number;
 }
 
-// Use cart
 type UseCart = {
   Products: Product[];
   addProduct: (product: Product) => void;
@@ -20,6 +19,8 @@ type UseCart = {
   totalItems: number;
   addQuantity: (product: Product) => void;
   decrementQuantity: (product: Product) => void;
+  shippingPrice: number;
+  setShippingPrice: (price: number) => void;
 };
 
 export const useCart = create<UseCart>()(
@@ -28,11 +29,11 @@ export const useCart = create<UseCart>()(
       Products: [],
       totalPrice: 0,
       totalItems: 0,
+      shippingPrice: 0,
       addProduct: (product: Product) => {
         const cart = get().Products;
         const cartItem = cart.find((item) => item.id === product.id);
         if (cartItem) {
-          // If product already in cart, increase its quantity
           set((state) => {
             const updatedCart = state.Products.map((item) =>
               item.id === product.id
@@ -46,7 +47,6 @@ export const useCart = create<UseCart>()(
             };
           });
         } else {
-          // If product not in cart, add it with quantity 1
           set((state) => ({
             Products: [...cart, { ...product, quantity: 1 }],
             totalItems: state.totalItems + 1,
@@ -75,6 +75,7 @@ export const useCart = create<UseCart>()(
           Products: [],
           totalPrice: 0,
           totalItems: 0,
+          shippingPrice: 0,
         }));
       },
       addQuantity: (product) => {
@@ -102,7 +103,6 @@ export const useCart = create<UseCart>()(
           const cartItem = cart.find((item) => item.id === product.id);
           if (cartItem) {
             if (cartItem.quantity === 1) {
-              // Remove the product if quantity reaches 0
               return {
                 Products: state.Products.filter(
                   (item) => item.id !== product.id
@@ -111,7 +111,6 @@ export const useCart = create<UseCart>()(
                 totalPrice: state.totalPrice - product.productPrice,
               };
             } else {
-              // Decrement the quantity if it's greater than 1
               const updatedCart = cart.map((item) =>
                 item.id === product.id
                   ? { ...item, quantity: item.quantity - 1 }
@@ -127,9 +126,14 @@ export const useCart = create<UseCart>()(
           return state;
         });
       },
+      setShippingPrice: (price: number) => {
+        set(() => ({
+          shippingPrice: price,
+        }));
+      },
     }),
     {
-      name: "product-storage",
+      name: "cart-storage",
       storage: createJSONStorage(() => localStorage),
     }
   )
