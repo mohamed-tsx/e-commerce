@@ -3,6 +3,7 @@ import Information from "../../Components/information";
 import { useCheckout } from "../../Hooks/useCheckout";
 import Shipping from "../../Components/Shipping";
 import Payment from "../../Components/Payment";
+import CheckoutProducts from "../../Components/CheckoutProducts";
 const Checkout = () => {
   const stage = useCheckout((state) => state.stage);
   useEffect(() => {
@@ -120,7 +121,7 @@ const Checkout = () => {
             <Shipping />
           ) : null}
         </div>
-        <div className="bg-black w-1/2 h-screen"></div>
+        <CheckoutProducts />
       </div>
     </div>
   );
