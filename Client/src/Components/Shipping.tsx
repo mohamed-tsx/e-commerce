@@ -36,9 +36,7 @@ const Shipping = () => {
     }
     // Update shipping method in checkout info
     setShippingMethod(formData.shippingMethod);
-    let totalAmount = totalPrice + shippingPrice;
-    totalAmount = Math.round(totalAmount);
-    updateFinalAmount(totalAmount);
+    updateFinalAmount(totalPrice + shippingPrice);
     changeStageToPayment();
   };
 
