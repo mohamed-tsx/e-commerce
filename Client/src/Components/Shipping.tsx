@@ -6,9 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../Hooks/useCart";
 
 const Shipping = () => {
-  const { checkoutInfo, setShippingMethod, changeStageToPayment } =
-    useCheckout();
-  const { setShippingPrice } = useCart();
+  const {
+    checkoutInfo,
+    setShippingMethod,
+    changeStageToPayment,
+    updateFinalAmount,
+  } = useCheckout();
+  const { setShippingPrice, totalPrice } = useCart();
   const [formData, setFormData] = useState({
     shippingMethod: "standard", // Default to standard shipping
   });
@@ -23,6 +27,7 @@ const Shipping = () => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
+    let shippingPrice = formData.shippingMethod === "standard" ? 5 : 15;
     // Set the shipping price based on the selected shipping method
     if (formData.shippingMethod === "standard") {
       setShippingPrice(5);
@@ -31,6 +36,7 @@ const Shipping = () => {
     }
     // Update shipping method in checkout info
     setShippingMethod(formData.shippingMethod);
+    updateFinalAmount(totalPrice + shippingPrice);
     changeStageToPayment();
   };
 

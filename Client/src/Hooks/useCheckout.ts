@@ -24,6 +24,8 @@ type CheckoutState = {
   setCheckoutInfo: (info: checkoutInfo) => void;
   shippingMethod: string;
   setShippingMethod: (shippingMethod: string) => void;
+  finalAmount: number;
+  updateFinalAmount: (amount: number) => void;
 };
 
 // Create the Zustand store with persistence
@@ -42,6 +44,7 @@ export const useCheckout = create<CheckoutState>()(
         postalCode: "",
         phone: "",
       },
+      finalAmount: 0,
       shippingMethod: "",
       changeStageToCart: () => set({ stage: "Cart" }),
       changeStageToAddress: () => set({ stage: "Address" }),
@@ -57,6 +60,7 @@ export const useCheckout = create<CheckoutState>()(
           shippingMethod: shippingMethod,
         }));
       },
+      updateFinalAmount: (amount) => set({ finalAmount: amount }),
     }),
     {
       name: "checkout-storage",
