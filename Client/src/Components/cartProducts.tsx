@@ -39,7 +39,7 @@ const CartProducts = () => {
             <div className="flex flex-col">
               <div className="flex items-center justify-between gap-14">
                 <h1 className="font-medium text-lg">Subtotal: </h1>
-                <h1 className="font-medium text-lg">${total}</h1>
+                <h1 className="font-medium text-lg">${total.toFixed(2)}</h1>
               </div>
               <div className="flex flex-col">
                 <p>Taxes and Shipping calculated at checkout</p>
