@@ -32,13 +32,14 @@ model Product {
 }
 
 model Order {
-  id        String      @id @default(uuid())
-  items     OrderItem[]
-  Address   String
-  status    OrderStatus @default(PENDING)
-  email     String
-  total     Float
-  createdAt DateTime    @default(now())
+  id          String      @id @default(uuid())
+  items       OrderItem[]
+  address     String
+  status      OrderStatus @default(PENDING)
+  email       String
+  total       Float
+  phoneNumber String
+  createdAt   DateTime    @default(now())
 }
 
 model OrderItem {
