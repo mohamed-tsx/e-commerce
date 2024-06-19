@@ -2,13 +2,21 @@ const asyncHandler = require("express-async-handler");
 const Prisma = require("../Config/Prisma");
 
 const createOrder = asyncHandler(async (req, res) => {
-  const { totalPrice, items, email, address, shippingMethod, phoneNumber } =
-    req.body;
+  const {
+    totalPrice,
+    fullName,
+    items,
+    email,
+    address,
+    shippingMethod,
+    phoneNumber,
+  } = req.body;
 
   // Validate the order
   if (
     !(
       totalPrice &&
+      fullName &&
       items &&
       items.length > 0 &&
       address &&
@@ -44,6 +52,7 @@ const createOrder = asyncHandler(async (req, res) => {
     const newOrder = await Prisma.order.create({
       data: {
         total: totalPrice,
+        name: fullName,
         email,
         address,
         shippingMethod,
