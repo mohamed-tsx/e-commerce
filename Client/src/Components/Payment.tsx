@@ -71,9 +71,6 @@ const Payment = () => {
 
     setValidPhoneNumber("");
 
-    // Simulate payment processing
-    // console.log("Payment Method:", formData.paymentMethod);
-    // console.log("Phone Number:", formData.phoneNumber);
     console.log({
       email,
       personalAddress,
