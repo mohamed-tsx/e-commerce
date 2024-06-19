@@ -194,4 +194,9 @@ const countries = [
   { name: "Zimbabwe", code: "ZW" },
 ];
 
+export const getCountryName = (code: string) => {
+  const country = countries.find((c) => c.code === code);
+  return country ? country.name : null;
+};
+
 export default countries;

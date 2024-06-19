@@ -2,15 +2,30 @@ import { BiArrowBack } from "react-icons/bi";
 import { useCheckout } from "../Hooks/useCheckout";
 import { useState, ChangeEvent, FormEvent } from "react";
 import { useCart } from "../Hooks/useCart";
+import { getCountryName } from "../Lib/Countries";
 
 const Payment = () => {
-  const { checkoutInfo, shippingMethod } = useCheckout();
-  const { shippingPrice } = useCart();
+  const { checkoutInfo, shippingMethod, finalAmount } = useCheckout();
+  const { shippingPrice, Products } = useCart();
   const [validPhoneNumber, setValidPhoneNumber] = useState<string>("");
   const [formData, setFormData] = useState({
     paymentMethod: "EVCPLUS", // Default to EVCPLUS
     phoneNumber: "",
   });
+  const {
+    email,
+    address,
+    city,
+    apartment,
+    selectedCountry,
+    firstName,
+    lastName,
+    postalCode,
+  } = checkoutInfo;
+  const countryName = getCountryName(selectedCountry);
+  const personalAddress = `${apartment} ${address} ${city} ${postalCode}, ${countryName}`;
+  const name = `${firstName} ${lastName}`;
+  const phoneNumber = formData.phoneNumber;
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -52,8 +67,17 @@ const Payment = () => {
     setValidPhoneNumber("");
 
     // Simulate payment processing
-    console.log("Payment Method:", formData.paymentMethod);
-    console.log("Phone Number:", formData.phoneNumber);
+    // console.log("Payment Method:", formData.paymentMethod);
+    // console.log("Phone Number:", formData.phoneNumber);
+    console.log({
+      email,
+      personalAddress,
+      name,
+      phoneNumber,
+      shippingMethod,
+      Products,
+      finalAmount,
+    });
     // Navigate to success page or show success message
     // For example, you can use a router navigate function here
   };
