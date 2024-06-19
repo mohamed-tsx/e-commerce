@@ -69,13 +69,15 @@ const createOrder = asyncHandler(async (req, res) => {
       },
     });
 
-    res
-      .status(201)
-      .json({ message: "Order is created succesfully", order: newOrder });
+    res.status(201).json({
+      success: true,
+      message: "Order is created succesfully",
+      order: newOrder,
+    });
   } catch (error) {
     console.error(error);
-    throw new Error(error);
     res.status(500).json({ message: "Failed to create order" });
+    throw new Error(error);
   }
 });
 
