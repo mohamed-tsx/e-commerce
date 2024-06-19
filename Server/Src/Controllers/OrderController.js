@@ -22,7 +22,24 @@ const createOrder = asyncHandler(async (req, res) => {
   }
 
   try {
-    
+    const productIds = items.map((item) => item.id);
+    const existingProducts = await Prisma.product.findMany({
+      where: {
+        id: {
+          in: productIds,
+        },
+      },
+    });
+
+    // Check if all products exist
+    const existingProductIds = existingProducts.map((product) => product.id);
+    const missingProducts = productIds.filter(
+      (productId) => !existingProductIds.includes(productId)
+    );
+    if (missingProducts.length > 0) {
+      res.status(404);
+      throw new Error(`Some products in the order are not available.`);
+    }
     // Create a new order
     const newOrder = await Prisma.order.create({
       data: {
