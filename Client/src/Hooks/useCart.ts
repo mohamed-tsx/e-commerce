@@ -51,6 +51,7 @@ export const useCart = create<UseCart>()(
             Products: [...cart, { ...product, quantity: 1 }],
             totalItems: state.totalItems + 1,
             totalPrice: state.totalPrice + product.productPrice,
+            shippingPrice: 0,
           }));
         }
       },
