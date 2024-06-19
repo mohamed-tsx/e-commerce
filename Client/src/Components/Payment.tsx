@@ -3,11 +3,13 @@ import { useCheckout } from "../Hooks/useCheckout";
 import { useState, ChangeEvent, FormEvent } from "react";
 import { useCart } from "../Hooks/useCart";
 import { getCountryName } from "../Lib/Countries";
+import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
   const apiUrl = "/api/orders/create";
-  const { checkoutInfo, shippingMethod, finalAmount } = useCheckout();
-  const { shippingPrice, Products } = useCart();
+  const { checkoutInfo, shippingMethod, finalAmount, clearCheckout } =
+    useCheckout();
+  const { shippingPrice, Products, removeAllProducts } = useCart();
   const [validPhoneNumber, setValidPhoneNumber] = useState<string>("");
   const [formData, setFormData] = useState({
     paymentMethod: "EVCPLUS", // Default to EVCPLUS
@@ -27,6 +29,8 @@ const Payment = () => {
   const personalAddress = `${apartment} ${address} ${city} ${postalCode}, ${countryName}`;
   const name = `${firstName} ${lastName}`;
   const phoneNumber = formData.phoneNumber;
+  const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -98,15 +102,19 @@ const Payment = () => {
       });
       const data = await res.json();
       if (!data.success) {
+        setError(data.message);
         return;
       }
+      clearCheckout();
+      removeAllProducts();
       setFormData({
         phoneNumber: "",
         paymentMethod: "",
       });
-    } catch (error) {}
-    // Navigate to success page or show success message
-    // For example, you can use a router navigate function here
+      navigate("/");
+    } catch (error: any) {
+      setError(error.message);
+    }
   };
 
   return (
@@ -256,6 +264,7 @@ const Payment = () => {
           Pay Now
         </button>
       </div>
+      {error && <p className="text-red-500 mt-10">{error}</p>}
     </form>
   );
 };
