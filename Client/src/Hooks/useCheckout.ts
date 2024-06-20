@@ -29,7 +29,6 @@ type CheckoutState = {
   clearCheckout: () => void;
 };
 
-// Create the Zustand store with persistence
 export const useCheckout = create<CheckoutState>()(
   persist(
     (set) => ({
