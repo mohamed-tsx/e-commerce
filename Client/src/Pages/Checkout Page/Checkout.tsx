@@ -4,11 +4,19 @@ import { useCheckout } from "../../Hooks/useCheckout";
 import Shipping from "../../Components/Shipping";
 import Payment from "../../Components/Payment";
 import CheckoutProducts from "../../Components/CheckoutProducts";
+import { useNavigate } from "react-router-dom";
 const Checkout = () => {
   const stage = useCheckout((state) => state.stage);
+  const {
+    changeStageToAddress,
+    changeStageToCart,
+    changeStageToPayment,
+    changeStageToShipping,
+  } = useCheckout();
   useEffect(() => {
     document.title = "Checkout";
   });
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col mt-12">
       <div className="flex">
@@ -18,7 +26,8 @@ const Checkout = () => {
 
             <div>
               <ol className="flex items-center gap-2 text-xs font-medium text-gray-500 sm:gap-4">
-                <li
+                <button
+                  onClick={() => navigate("/cart")}
                   className={`flex items-center ${
                     stage === "Cart" ? "text-blue-600" : ""
                   }`}
@@ -43,9 +52,10 @@ const Checkout = () => {
                       </svg>
                     </span>
                   )}
-                </li>
+                </button>
 
-                <li
+                <button
+                  onClick={() => changeStageToAddress()}
                   className={`flex items-center justify-center gap-2 ${
                     stage === "Address" ? "text-blue-600" : ""
                   }`}
@@ -70,9 +80,10 @@ const Checkout = () => {
                       </svg>
                     </span>
                   )}
-                </li>
+                </button>
 
-                <li
+                <button
+                  onClick={() => changeStageToShipping()}
                   className={`flex items-center justify-end gap-2 ${
                     stage === "Shipping" ? "text-blue-600" : ""
                   }`}
@@ -98,9 +109,10 @@ const Checkout = () => {
                         </svg>
                       </span>
                     ))}
-                </li>
+                </button>
 
-                <li
+                <button
+                  onClick={() => changeStageToPayment()}
                   className={`flex items-center justify-end gap-2 ${
                     stage === "Payment" ? "text-blue-600" : ""
                   }`}
@@ -109,7 +121,7 @@ const Checkout = () => {
                     4
                   </span>
                   <span> Payment </span>
-                </li>
+                </button>
               </ol>
             </div>
           </div>
