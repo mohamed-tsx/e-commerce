@@ -125,7 +125,6 @@ const Checkout = () => {
               </ol>
             </div>
           </div>
-          // Added Stage Change Components
           {stage === "Address" ? (
             <Information />
           ) : stage === "Payment" ? (
