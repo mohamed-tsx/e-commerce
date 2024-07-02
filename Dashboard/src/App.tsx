@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import Dashbaord from "./Pages/Dashboard/Dashbaord";
+import Login from "./Pages/Auth Pages/Login";
 
 export default function App() {
   return (
@@ -8,6 +9,7 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Dashbaord />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );
