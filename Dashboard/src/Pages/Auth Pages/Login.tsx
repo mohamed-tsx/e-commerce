@@ -10,7 +10,6 @@ const Login = () => {
     email: "",
     password: "",
   });
-
   const apiUrl = "/api/user/login";
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
