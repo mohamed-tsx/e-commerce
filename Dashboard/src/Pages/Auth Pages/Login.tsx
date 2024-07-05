@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useUser } from "../../Hooks/useUser";
+import { useNavigate } from "react-router-dom";
 
 type FormDataTypes = {
   email: string;
@@ -15,6 +16,8 @@ const Login = () => {
   const { saveUserInfo } = useUser();
 
   const apiUrl = "/api/user/login";
+
+  const navigate = useNavigate();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -60,7 +63,7 @@ const Login = () => {
         password: "",
       });
 
-      console.log(data);
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }

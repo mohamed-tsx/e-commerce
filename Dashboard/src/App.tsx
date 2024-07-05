@@ -10,6 +10,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Dashbaord />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashbaord />} />
       </Routes>
     </div>
   );
