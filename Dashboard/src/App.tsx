@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import Dashbaord from "./Pages/Dashboard/Dashbaord";
 import Login from "./Pages/Auth Pages/Login";
+import DashboardProtector from "./Components/Route Protection/ProtectDashboard";
 
 export default function App() {
   return (
@@ -10,7 +11,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Dashbaord />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashbaord />} />
+        <Route element={<DashboardProtector />}>
+          <Route path="/dashboard" element={<Dashbaord />} />
+        </Route>
       </Routes>
     </div>
   );
