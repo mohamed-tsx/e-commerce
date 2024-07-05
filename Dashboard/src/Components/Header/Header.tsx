@@ -1,5 +1,5 @@
 import { RiMenu4Fill } from "react-icons/ri";
-import Logo from "../../../public/Zylo Logo.png";
+import Logo from "/Zylo Logo.png";
 import { Link } from "react-router-dom";
 const Header = () => {
   return (
