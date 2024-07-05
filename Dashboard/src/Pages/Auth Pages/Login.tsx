@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useUser } from "../../Hooks/useUser";
 
 type FormDataTypes = {
   email: string;
@@ -10,7 +11,9 @@ const Login = () => {
     email: "",
     password: "",
   });
-  
+
+  const { saveUserInfo } = useUser();
+
   const apiUrl = "/api/user/login";
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -42,6 +45,15 @@ const Login = () => {
         console.log("Error: " + JSON.stringify(data));
         return;
       }
+
+      const user = data.rest;
+
+      if (user.role !== "admin") {
+        console.log("You're not allowed to login since you're not admin");
+        return;
+      }
+
+      saveUserInfo(user);
 
       setFormData({
         email: "",
