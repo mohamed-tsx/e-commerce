@@ -24,6 +24,7 @@ export const useUser = create<UserStore>()(
       },
       logout: () => {
         set(() => ({ User: null }));
+        localStorage.removeItem("user-storage");
       },
     }),
     {
