@@ -1,8 +1,13 @@
+import SideBar from "../../Components/Dashboard Sidebar/SideBar";
 
 const Dashbaord = () => {
   return (
-    <div>Dashbaord</div>
-  )
-}
+    <div>
+      <div className="overflow-hidden">
+        <SideBar />
+      </div>
+    </div>
+  );
+};
 
-export default Dashbaord
+export default Dashbaord;
