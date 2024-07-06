@@ -1,10 +1,10 @@
-import SideBar from "../../Components/Dashboard Sidebar/SideBar";
+import Sidebar from "../../Components/Dashboard Sidebar/SideBar";
 
 const Dashbaord = () => {
   return (
     <div>
-      <div className="overflow-hidden">
-        <SideBar />
+      <div className="">
+        <Sidebar />
       </div>
     </div>
   );
