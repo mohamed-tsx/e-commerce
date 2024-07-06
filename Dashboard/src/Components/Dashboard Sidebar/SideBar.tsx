@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FiHome, FiX } from "react-icons/fi";
+import { FiHome } from "react-icons/fi";
 import { IoMdPricetag } from "react-icons/io";
 import { LuArchive } from "react-icons/lu";
 import { MdOutlineAnalytics } from "react-icons/md";
