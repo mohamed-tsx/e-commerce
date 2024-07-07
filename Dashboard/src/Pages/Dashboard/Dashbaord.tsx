@@ -1,11 +1,8 @@
-import Sidebar from "../../Components/Dashboard Sidebar/SideBar";
-
 const Dashbaord = () => {
   return (
-    <div>
-      <div className="">
-        <Sidebar />
-      </div>
+    <div className="outline-1 outline-red-500">
+      <p>dkhwefhweifhiwehfuwefuhweufwueohfvwjbvubdvhbrubvhrbvurh1</p>
+      <div className=""></div>
     </div>
   );
 };
