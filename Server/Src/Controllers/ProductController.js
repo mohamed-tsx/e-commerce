@@ -74,8 +74,35 @@ const deleteProduct = asyncHandler(async (req, res) => {
   });
 });
 
+const oneProduct = asyncHandler(async (req, res) => {
+  //Fetch id from request body
+  const id = req.params.id;
+
+  //check if id is passed
+  if (!id) {
+    throw new Error("Please choose a valid product");
+  }
+
+  //Fetch product from database
+  const product = await Prisma.product.findUnique({
+    where: { id },
+  });
+
+  // Check if product exists
+  if (!product) {
+    throw new Error("Product not found");
+  }
+
+  // Response the product with success message if the product exists
+  res.status(200).json({
+    success: true,
+    product,
+  });
+});
+
 module.exports = {
   addProduct,
   allProducts,
   deleteProduct,
+  oneProduct,
 };
