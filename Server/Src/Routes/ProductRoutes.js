@@ -12,6 +12,6 @@ const {
 router.post("/add", Verify, isAdmin, addProduct);
 router.get("/allProducts", allProducts);
 router.delete("/deleteProduct/:id", Verify, isAdmin, deleteProduct);
-router.get("/product/:id", Verify, oneProduct);
+router.get("/:id", Verify, oneProduct);
 
 module.exports = router;

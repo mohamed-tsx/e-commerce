@@ -1,6 +1,10 @@
 const asyncHandler = require("express-async-handler");
 const Prisma = require("../Config/Prisma");
 
+// @description Add product
+// @Method POST
+// @Route /products/add/
+// @Access private only admin can access this route
 const addProduct = asyncHandler(async (req, res) => {
   // Fetch product details from request body
   const { productName, productDescription, imageUrl } = req.body;
@@ -35,6 +39,10 @@ const addProduct = asyncHandler(async (req, res) => {
   });
 });
 
+// @description Find all products
+// @Method GET
+// @Route /products/allProducts/
+// @Access public
 const allProducts = asyncHandler(async (req, res) => {
   // Fetch Products from database
   const allProducts = await Prisma.product.findMany();
@@ -44,6 +52,10 @@ const allProducts = asyncHandler(async (req, res) => {
   });
 });
 
+// @description Delete one product
+// @Method DELETE
+// @Route /products/deleteProduct/:id
+// @Access private only admin can access this route
 const deleteProduct = asyncHandler(async (req, res) => {
   // Fetch product id from request params
   const id = req.params.id;
@@ -74,6 +86,10 @@ const deleteProduct = asyncHandler(async (req, res) => {
   });
 });
 
+// @description Find one product
+// @Method GET
+// @Route /products/:id
+// @Access public
 const oneProduct = asyncHandler(async (req, res) => {
   //Fetch id from request body
   const id = req.params.id;
