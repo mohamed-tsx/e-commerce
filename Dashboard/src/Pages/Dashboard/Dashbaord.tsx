@@ -15,7 +15,10 @@ const Dashbaord = () => {
           <p className="text-2xl font-semibold">64</p>
         </div>
       </div>
-      <div className=""></div>
+      <div className="p-6">
+        <hr />
+      </div>
+      <div className="p-6">Charts</div>
     </div>
   );
 };
