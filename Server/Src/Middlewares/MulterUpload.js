@@ -9,6 +9,4 @@ const multerUpload = multer({
   },
 });
 
-module.export = {
-  multerUpload,
-};
+module.exports = multerUpload;
