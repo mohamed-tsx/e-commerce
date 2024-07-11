@@ -6,7 +6,7 @@ import { MdOutlineAnalytics } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
 
 const Sidebar = () => {
-  const location = useLocation();
+  const location = useLocation();2
   return (
     <div className="fixed inset-0 bg-gray-900 bg-opacity-0 flex justify-start z-50 w-fit">
       <div className="bg-gray-100 h-full w-64 flex flex-col justify-between">
