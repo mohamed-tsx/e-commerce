@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Prisma = require("../Config/Prisma");
+const { cloudinary } = require("../Config/Cloudinary");
 
 // @description Add product
 // @Method POST
@@ -7,7 +8,27 @@ const Prisma = require("../Config/Prisma");
 // @Access private only admin can access this route
 const addProduct = asyncHandler(async (req, res) => {
   // Fetch product details from request body
-  const { productName, productDescription, imageUrl } = req.body;
+  const { productName, productDescription } = req.body;
+
+  // Fetch product image from request file
+  const image = req.file;
+
+  // Declare result to store the link
+  let result;
+
+  // Check if image exists
+  if (image) {
+    // Incode the image from jpeg to base64
+    let encodedImage = `data:image/jpeg;base64,${image.buffer.toString(
+      "base64"
+    )}`;
+
+    result = await cloudinary.uploader.upload(encodedImage, {
+      resource_type: "image",
+      transformation: [{ width: 768, height: 768, crop: "limit" }],
+      encoding: "base64",
+    });
+  }
 
   // Fetch product price particularly and parse it into a float
   const productPrice = parseFloat(req.body.productPrice);
@@ -28,7 +49,7 @@ const addProduct = asyncHandler(async (req, res) => {
       productDescription,
       productPrice,
       quantity,
-      imageUrl,
+      imageUrl: result.secure_url,
     },
   });
   // Return success response
