@@ -66,7 +66,11 @@ const addProduct = asyncHandler(async (req, res) => {
 // @Access public
 const allProducts = asyncHandler(async (req, res) => {
   // Fetch Products from database
-  const allProducts = await Prisma.product.findMany();
+  const allProducts = await Prisma.product.findMany({
+    include: {
+      OrderItems: true,
+    },
+  });
   res.status(200).json({
     allProducts,
     success: true,
