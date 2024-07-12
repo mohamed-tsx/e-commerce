@@ -12,7 +12,9 @@ export default function App() {
   return (
     <div className="flex">
       {!isLocationLogin && <Sidebar />}
-      <div className={`${!isLocationLogin ? "pl-64" : "w-full"} px-16 py-6`}>
+      <div
+        className={`${!isLocationLogin ? "pl-64 w-full" : "w-full"} px-16 py-6`}
+      >
         <Routes>
           <Route path="/" element={<Dashbaord />} />
           <Route path="/login" element={<Login />} />
