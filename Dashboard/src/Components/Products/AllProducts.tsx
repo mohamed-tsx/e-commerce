@@ -20,15 +20,11 @@ const AllProducts = () => {
   return (
     <div>
       <h1>All Products</h1>
-      {products.length === 0 ? (
-        <p>No products available</p>
-      ) : (
         <ul>
           {products.map((product) => (
             <li key={product.id}>{product.productName}</li>
           ))}
         </ul>
-      )}
     </div>
   );
 };
