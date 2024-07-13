@@ -77,6 +77,19 @@ const allProducts = asyncHandler(async (req, res) => {
   });
 });
 
+// @description Find all products
+// @Method GET
+// @Route /products/allProducts/
+// @Access public
+const adminViewAllProducts = asyncHandler(async (req, res) => {
+  // Fetch Products from database
+  const allProducts = await Prisma.product.findMany();
+  res.status(200).json({
+    allProducts,
+    success: true,
+  });
+});
+
 // @description Delete one product
 // @Method DELETE
 // @Route /products/deleteProduct/:id
@@ -146,4 +159,5 @@ module.exports = {
   allProducts,
   deleteProduct,
   oneProduct,
+  adminViewAllProducts,
 };
