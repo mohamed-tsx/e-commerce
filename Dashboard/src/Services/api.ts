@@ -10,7 +10,7 @@ export const checkIfProductsExists = async () => {
 };
 
 export const Products = async () => {
-  const apiUrl = "api/products/allProducts";
+  const apiUrl = "api/products/adminViewAllProducts";
   const res = await fetch(apiUrl);
   const data = await res.json();
   if (data.success) {
