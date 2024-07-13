@@ -4,6 +4,7 @@ import Login from "./Pages/Auth Pages/Login";
 import DashboardProtector from "./Components/Route Protection/ProtectDashboard";
 import Sidebar from "./Components/Dashboard Sidebar/SideBar";
 import Products from "./Pages/Products/Products";
+import AddProduct from "./Pages/Products/AddProduct";
 
 export default function App() {
   const location = useLocation();
@@ -21,6 +22,7 @@ export default function App() {
           <Route element={<DashboardProtector />}>
             <Route path="/dashboard" element={<Dashbaord />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/products/new" element={<AddProduct />} />
           </Route>
         </Routes>
       </div>
