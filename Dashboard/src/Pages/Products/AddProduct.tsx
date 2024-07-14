@@ -1,4 +1,5 @@
 const AddProduct = () => {
+  
   return (
     <form className="px-7 py-4 space-y-3">
       <div className="bg-gray-300 p-4 rounded-md space-y-5">

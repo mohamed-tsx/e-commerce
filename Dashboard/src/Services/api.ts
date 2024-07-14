@@ -19,3 +19,13 @@ export const Products = async () => {
   }
   return `Failed to fetch products ${data.message}`;
 };
+
+export const AddProduct = async () => {
+  const apiUrl = "api/products/add";
+  const res = await fetch(apiUrl);
+  const data = await res.json();
+  if (data.success) {
+    return "Successfully added new product";
+  }
+  return `Failed to fetch products ${data.message}`;
+};
