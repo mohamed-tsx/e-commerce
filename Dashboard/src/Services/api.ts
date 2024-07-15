@@ -19,13 +19,16 @@ export const Products = async () => {
   }
   return `Failed to fetch products ${data.message}`;
 };
+export const addProduct = async (formData: FormData) => {
+  const apiUrl = "/api/products/add"; // Ensure this is the correct path
+  const res = await fetch(apiUrl, {
+    method: "POST",
+    body: formData,
+  });
 
-export const AddProduct = async () => {
-  const apiUrl = "api/products/add";
-  const res = await fetch(apiUrl);
   const data = await res.json();
   if (data.success) {
     return "Successfully added new product";
   }
-  return `Failed to fetch products ${data.message}`;
+  return `Failed to add product: ${data.message}`;
 };

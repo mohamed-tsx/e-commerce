@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from "react";
+import { addProduct } from "../../Services/api"; // Adjust the path as necessary
 
 const AddProduct = () => {
   const [formData, setFormData] = useState({
@@ -31,10 +32,26 @@ const AddProduct = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Add form validation and submission logic here
-    console.log(formData);
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append("productName", formData.productName);
+      formDataToSend.append("productDescription", formData.productDescription);
+      formDataToSend.append("productPrice", formData.productPrice);
+      formDataToSend.append("quantity", formData.quantity);
+      if (formData.productImage) {
+        formDataToSend.append("image", formData.productImage);
+      }
+
+      const response = await addProduct(formDataToSend); // Call your API function
+
+      console.log(response);
+      // Handle success (e.g., show a success message or redirect)
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+      // Handle error (e.g., show an error message)
+    }
   };
 
   return (
