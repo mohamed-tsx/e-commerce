@@ -13,7 +13,7 @@ const Hero = () => {
           Zylo <span className=" rounded-md bg-black text-white">|</span> Style
           Centeral
         </h1>
-        <p className="font-medium mt-6 text-2xl">
+        <p className="font-medium mt-6 text-base">
           Welcome to Zylo where fashion meets comfort. Explore our curated
           collection of clothing, accessories, and more.
         </p>
