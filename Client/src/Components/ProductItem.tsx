@@ -59,10 +59,12 @@ const ProductItem = ({
           }}
         />
         <div className="p-5 flex flex-col">
-          <h3 className="text-lg font-bold mb-2">{productName}</h3>
-          <p className="text-gray-500 mb-4">{productDescription}</p>
+          <h3 className="font-bold mb-2 text-sm">{productName}</h3>
+          <p className="text-gray-500 mb-4 truncate text-xs">
+            {productDescription}
+          </p>
           <div className="flex items-center justify-between mt-auto">
-            <span className="text-xl font-bold">${productPrice}</span>
+            <span className="font-bold text-base">${productPrice}</span>
             <div className="flex items-center gap-2">
               {isProductInCart ? (
                 <button
@@ -73,7 +75,7 @@ const ProductItem = ({
                 </button>
               ) : (
                 <button
-                  className="px-5 py-2 bg-black text-white rounded-md"
+                  className="px-5 py-2 bg-black text-white rounded-md text-sm"
                   onClick={() => handleAddingProductToCart(currentProduct)}
                 >
                   Add to Cart
