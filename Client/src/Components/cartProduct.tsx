@@ -31,13 +31,13 @@ const CartProduct = ({
   };
 
   return (
-    <div className="flex items-center border p-4 my-2 rounded truncate">
+    <div className="flex items-center border p-4 my-2 rounded">
       <img
         src={imageUrl}
         alt={productName}
         className="w-24 h-24 object-cover mr-4 rounded"
       />
-      <div className="flex flex-col flex-1 ">
+      <div className="flex flex-col flex-1 truncate">
         <h3 className="text-lg font-bold">{productName}</h3>
         <p className="my-1" title={productDescription}>
           {productDescription}
