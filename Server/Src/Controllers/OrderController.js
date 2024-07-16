@@ -84,7 +84,14 @@ const createOrder = asyncHandler(async (req, res) => {
 const getAllOrders = asyncHandler(async (req, res) => {
   const orders = await Prisma.order.findMany({
     include: {
-      items: true,
+      items: {
+        select: {
+          product: true,
+          orderId: true,
+          productId: true,
+          quantity: true,
+        },
+      },
     },
   });
   res.status(200).json({ success: true, orders: orders });
