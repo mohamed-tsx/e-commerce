@@ -97,7 +97,40 @@ const getAllOrders = asyncHandler(async (req, res) => {
   res.status(200).json({ success: true, orders: orders });
 });
 
+const getSpecificOrder = asyncHandler(async (req, res) => {
+  // Fetch Id from request parameters
+  const { id } = req.params;
+
+  // Search an order which have the same id
+  const order = await Prisma.order.findUnique({
+    where: {
+      id: id,
+    },
+    include: {
+      items: {
+        select: {
+          product: true,
+          orderId: true,
+          productId: true,
+          quantity: true,
+        },
+      },
+    },
+  });
+
+  // If this order doesn't exist return error response
+  if (!order) {
+    throw new Error("Order not found");
+  }
+
+  // If this order exists return success response
+  res.status(200).json({
+    success: true,
+    order,
+  });
+});
 module.exports = {
   createOrder,
   getAllOrders,
+  getSpecificOrder,
 };
