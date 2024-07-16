@@ -32,3 +32,15 @@ export const addProduct = async (formData: FormData) => {
   }
   return `Failed to add product: ${data.message}`;
 };
+
+// Orders
+export const checkIfOrdersExists = async () => {
+  const apiUrl = "api/products/all-orders";
+  const res = await fetch(apiUrl);
+  const data = await res.json();
+  if (data.success) {
+    const products = data.allProducts;
+    return products.length < 1;
+  }
+  return false;
+};
