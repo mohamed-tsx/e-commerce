@@ -40,7 +40,7 @@ export const checkIfOrdersExists = async () => {
   const res = await fetch(apiUrl);
   const data = await res.json();
   if (data.success === true) {
-    const products = data.allProducts;
+    const products = data.orders;
     return products.length < 1;
   }
   return false;
