@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { checkIfOrdersExists } from "../../Services/api";
+import AllOrders from "../../Components/Orders/AllOrders";
 const Orders = () => {
   const [areOrdersAvailabe, setAreOrdersAvailabe] = useState<null | boolean>(
     null
@@ -19,7 +20,7 @@ const Orders = () => {
       {areOrdersAvailabe === null ? (
         <p>Loading...</p>
       ) : areOrdersAvailabe ? (
-        <p>There's orders</p>
+        <AllOrders />
       ) : (
         <p>No products available</p>
       )}

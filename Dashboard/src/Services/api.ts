@@ -19,6 +19,8 @@ export const Products = async () => {
   }
   return `Failed to fetch products ${data.message}`;
 };
+
+
 export const addProduct = async (formData: FormData) => {
   const apiUrl = "/api/products/add"; // Ensure this is the correct path
   const res = await fetch(apiUrl, {
@@ -44,3 +46,4 @@ export const checkIfOrdersExists = async () => {
   }
   return false;
 };
+
