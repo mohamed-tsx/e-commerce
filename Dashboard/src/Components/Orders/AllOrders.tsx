@@ -1,34 +1,35 @@
 import { useEffect, useState } from "react";
-import { Products } from "../../Services/api";
-import { Product as ProductType } from "../../Types/ProductTypes";
+import { Orders } from "../../Services/api";
+import { Order as OrderType } from "../../Types/OrderTypes";
 // import ProductRow from "./Product"; // Adjust the import path as needed
 import { Link } from "react-router-dom";
 
 const AllOrders = () => {
-  const [products, setProducts] = useState<ProductType[]>([]);
+  const [orders, setorder] = useState<OrderType[]>([]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchorder = async () => {
       try {
-        const productsData: ProductType[] = await Products();
-        setProducts(productsData);
+        const orderData: OrderType[] = await Orders();
+        setorder(orderData);
       } catch (error) {
-        console.error("Failed to fetch products", error);
+        console.error("Failed to fetch order", error);
       }
+      console.log("first");
     };
 
-    fetchProducts();
+    fetchorder();
   }, []); // Empty dependency array to run this effect only once after the initial render
 
   return (
     <div className="px-7 py-4">
       <div className="flex justify-between items-center">
-        <h1 className="text-lg font-semibold">Products</h1>
+        <h1 className="text-lg font-semibold">order</h1>
         <Link
-          to="/products/new"
+          to="/order/new"
           className="flex items-center justify-center px-4 py-2 bg-black text-white rounded"
         >
-          Add Products
+          Add order
         </Link>
       </div>
       <div className="bg-gray-300 w-full mt-10 p-6 rounded">
@@ -50,9 +51,9 @@ const AllOrders = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-black text-sm">
-            {products.map((product) => (
+            {orders.map((order) => (
               //   <ProductRow key={product.id} {...product} />
-              <p>{product.imageUrl}</p>
+              <p>{order.address}</p>
             ))}
           </tbody>
         </table>
