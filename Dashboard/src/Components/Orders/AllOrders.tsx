@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Orders } from "../../Services/api";
 import { Order as OrderType } from "../../Types/OrderTypes";
-// import ProductRow from "./Product"; // Adjust the import path as needed
 import { Link } from "react-router-dom";
+import OrderRow from "./Order";
 
 const AllOrders = () => {
   const [orders, setorder] = useState<OrderType[]>([]);
@@ -55,7 +55,7 @@ const AllOrders = () => {
           </thead>
           <tbody className="divide-y divide-black text-sm">
             {orders.map((order) => (
-              <p>{order.address}</p>
+              <OrderRow {...order} />
             ))}
           </tbody>
         </table>
