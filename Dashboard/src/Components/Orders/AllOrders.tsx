@@ -19,7 +19,7 @@ const AllOrders = () => {
     };
 
     fetchorder();
-  }, []); // Empty dependency array to run this effect only once after the initial render
+  }, []);
 
   return (
     <div className="px-7 py-4">
