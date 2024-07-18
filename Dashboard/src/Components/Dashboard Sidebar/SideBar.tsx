@@ -4,6 +4,7 @@ import { IoMdPricetag } from "react-icons/io";
 import { LuArchive } from "react-icons/lu";
 import { MdOutlineAnalytics } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
+import { BiUser } from "react-icons/bi";
 
 const Sidebar = () => {
   const location = useLocation();
@@ -80,6 +81,21 @@ const Sidebar = () => {
                     <MdOutlineAnalytics />
                   </span>
                   <span className="text-xs">Analysis</span>
+                </Link>
+              </li>
+              <li
+                className={`mb-3 hover:bg-gray-300 rounded-md ${
+                  location.pathname === "/users" ? "bg-gray-300" : ""
+                }`}
+              >
+                <Link
+                  to="/users"
+                  className="flex items-center space-x-2 p-2 rounded"
+                >
+                  <span className="text-sm">
+                    <BiUser />
+                  </span>
+                  <span className="text-xs">Users</span>
                 </Link>
               </li>
             </ul>
