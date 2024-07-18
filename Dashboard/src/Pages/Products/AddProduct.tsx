@@ -45,9 +45,6 @@ const AddProduct = () => {
       }
 
       const response = await addProduct(formDataToSend); // Call your API function
-
-      console.log(response);
-      // Handle success (e.g., show a success message or redirect)
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
       // Handle error (e.g., show an error message)

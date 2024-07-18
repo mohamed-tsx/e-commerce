@@ -62,7 +62,6 @@ const Information = () => {
       return;
     }
     setError("");
-    console.log(formData);
     setCheckoutInfo(formData);
     changeStageToShipping();
   };

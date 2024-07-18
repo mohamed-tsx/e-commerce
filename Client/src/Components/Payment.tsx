@@ -71,16 +71,6 @@ const Payment = () => {
 
     setValidPhoneNumber("");
 
-    console.log({
-      email,
-      personalAddress,
-      name,
-      phoneNumber,
-      shippingMethod,
-      Products,
-      finalAmount,
-    });
-
     try {
       const res = await fetch(apiUrl, {
         method: "POST",

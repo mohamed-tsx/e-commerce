@@ -15,7 +15,6 @@ const AllOrders = () => {
       } catch (error) {
         console.error("Failed to fetch order", error);
       }
-      console.log("first");
     };
 
     fetchOrder();

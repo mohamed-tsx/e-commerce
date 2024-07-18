@@ -23,7 +23,6 @@ const AllProducts = () => {
           setError(data.message);
           return;
         }
-        console.log(data.allProducts);
         setProducts(data.allProducts);
       } catch (error) {
         setError("Error fetching products.");
