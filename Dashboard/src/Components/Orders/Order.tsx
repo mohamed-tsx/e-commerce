@@ -18,8 +18,8 @@ const OrderRow = ({
       </td>
       <td>
         <div
-          className={`whitespace-nowrap flex justify-center items-center w-fit px-2 lowercase ${
-            orderStatus === "PENDING" ? "bg-yellow-100 rounded-lg" : ""
+          className={`whitespace-nowrap flex justify-center items-center w-fit px-2 lowercase text-xs ${
+            orderStatus === "PENDING" ? "bg-yellow-100 rounded-full" : ""
           }`}
         >
           {orderStatus}
@@ -27,8 +27,8 @@ const OrderRow = ({
       </td>
       <td>
         <div
-          className={`whitespace-nowrap flex justify-center items-center  w-fit px-2 lowercase ${
-            paymentStatus === "PENDING" ? "bg-yellow-100 rounded-lg" : ""
+          className={`whitespace-nowrap flex justify-center items-center  w-fit px-2 lowercase text-xs ${
+            paymentStatus === "PENDING" ? "bg-yellow-100 rounded-full" : ""
           }`}
         >
           {paymentStatus}
