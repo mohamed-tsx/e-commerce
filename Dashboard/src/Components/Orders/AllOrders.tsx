@@ -8,7 +8,7 @@ const AllOrders = () => {
   const [orders, setorder] = useState<OrderType[]>([]);
 
   useEffect(() => {
-    const fetchorder = async () => {
+    const fetchOrder = async () => {
       try {
         const orderData: OrderType[] = await Orders();
         setorder(orderData);
@@ -18,7 +18,7 @@ const AllOrders = () => {
       console.log("first");
     };
 
-    fetchorder();
+    fetchOrder();
   }, []);
 
   return (
@@ -37,22 +37,24 @@ const AllOrders = () => {
           <thead className="text-sm">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Select
+                Address
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Product
+                Order Status
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Orders
+                Payment Status
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Inventory
+                Products
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Total
               </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-black text-sm">
             {orders.map((order) => (
-              //   <ProductRow key={product.id} {...product} />
               <p>{order.address}</p>
             ))}
           </tbody>
