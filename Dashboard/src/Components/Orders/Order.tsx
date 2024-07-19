@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { Order as OrderTypes } from "../../Types/OrderTypes";
 
 interface ProductProps extends OrderTypes {}
 
 const OrderRow = ({
+  id,
   address,
   orderStatus,
   paymentStatus,
@@ -10,13 +12,12 @@ const OrderRow = ({
   items,
 }: ProductProps) => {
   const products = items.map(({ product }) => product);
+  const navigate = useNavigate();
 
   return (
     <tr
       className="hover:bg-gray-400 cursor-pointer"
-      onClick={() => {
-        console.log("Hi");
-      }}
+      onClick={() => navigate(`/orders/${id}`)}
     >
       <td className="px-6 py-4 whitespace-nowrap flex items-center gap-5">
         {address}
