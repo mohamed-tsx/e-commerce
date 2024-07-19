@@ -13,7 +13,7 @@ const OrderRow = ({
 
   return (
     <tr
-      className="hover:bg-gray-400"
+      className="hover:bg-gray-400 cursor-pointer"
       onClick={() => {
         console.log("Hi");
       }}
