@@ -55,7 +55,7 @@ const Sidebar = () => {
               </li>
               <li
                 className={`mb-3 hover:bg-gray-300 rounded-md ${
-                  location.pathname === "/orders" ? "bg-gray-300" : ""
+                  location.pathname.startsWith("/orders") ? "bg-gray-300" : ""
                 }`}
               >
                 <Link
