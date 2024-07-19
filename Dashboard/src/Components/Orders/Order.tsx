@@ -12,7 +12,12 @@ const OrderRow = ({
   const products = items.map(({ product }) => product);
 
   return (
-    <tr>
+    <tr
+      className="hover:bg-gray-400"
+      onClick={() => {
+        console.log("Hi");
+      }}
+    >
       <td className="px-6 py-4 whitespace-nowrap flex items-center gap-5">
         {address}
       </td>
