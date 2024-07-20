@@ -31,7 +31,7 @@ const AllOrders = () => {
           Add order
         </Link>
       </div>
-      <div className="bg-gray-300 w-full mt-10 p-6 rounded">
+      <div className="bg-gray-300 w-full mt-10 p-6 rounded text-xs">
         <table className="min-w-full divide-y divide-black">
           <thead className="text-sm">
             <tr>

@@ -16,7 +16,7 @@ const OrderRow = ({
 
   return (
     <tr
-      className="hover:bg-gray-400 cursor-pointer"
+      className="hover:bg-gray-400 cursor-pointer text-xs"
       onClick={() => navigate(`/orders/${id}`)}
     >
       <td className="px-6 py-4 whitespace-nowrap flex items-center gap-5">
