@@ -56,3 +56,19 @@ export const Orders = async () => {
   }
   return `Failed to fetch orders ${data.message}`;
 };
+
+export const specieficOrder = async (id: string) => {
+  const apiUrl = `/api/orders/${id}`;
+  const res = await fetch(apiUrl, {
+    headers: {
+      "content-type": "application/json",
+    },
+  });
+  const data = await res.json();
+  if (data.success === true) {
+    const order = data.order;
+    console.log(order);
+    return order;
+  }
+  return `Failed to fetch orders ${data.message}`;
+};
