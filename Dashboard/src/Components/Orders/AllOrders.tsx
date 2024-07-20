@@ -8,7 +8,7 @@ const AllOrders = () => {
   const [orders, setorder] = useState<OrderType[]>([]);
 
   useEffect(() => {
-    const fetchOrder = async () => {
+    const fetchOrders = async () => {
       try {
         const orderData: OrderType[] = await Orders();
         setorder(orderData);
@@ -17,13 +17,13 @@ const AllOrders = () => {
       }
     };
 
-    fetchOrder();
+    fetchOrders();
   }, []);
 
   return (
     <div className="px-7 py-4">
       <div className="flex justify-between items-center">
-        <h1 className="text-lg font-semibold">order</h1>
+        <h1 className="text-lg font-medium">Orders</h1>
         <Link
           to="/order/new"
           className="flex items-center justify-center px-4 py-2 bg-black text-white rounded"
