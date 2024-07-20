@@ -10,6 +10,6 @@ const router = express.Router();
 
 router.post("/create", Verify, isAdmin, createOrder);
 router.get("/all-orders", Verify, isAdmin, getAllOrders);
-router.get("/get-speciefic-order/:id", Verify, isAdmin, getSpecificOrder);
+router.get("/:id", Verify, isAdmin, getSpecificOrder);
 
 module.exports = router;
