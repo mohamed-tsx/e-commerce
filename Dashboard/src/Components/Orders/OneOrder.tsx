@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Order as OrderType } from "../../Types/OrderTypes";
-import { specieficOrder } from "../../Services/api";
+import { specificOrder } from "../../Services/api";
 
 const Order = () => {
   const [order, setOrder] = useState<OrderType | undefined>();
@@ -13,7 +13,7 @@ const Order = () => {
     const fetchOrder = async () => {
       if (id) {
         try {
-          const orderData = await specieficOrder(id);
+          const orderData = await specificOrder(id);
           setOrder(orderData);
         } catch (error) {
           console.error("Failed to fetch order", error);
@@ -55,7 +55,35 @@ const Order = () => {
                 Order Status {order.orderStatus} ({order.items.length})
               </span>
               <div>
-                <hr className="h-[2px]" />
+                {order.items.map((item) => (
+                  <div
+                    key={item.productId}
+                    className="flex items-center p-4 bg-white rounded-md shadow-md mb-4 relative"
+                  >
+                    <div className="flex-shrink-0">
+                      <img
+                        src={item.product.imageUrl}
+                        alt={item.product.productName}
+                        className="w-16 h-16 rounded-xl"
+                      />
+                      <div className="absolute top-2 left-2 bg-gray-500 rounded-full w-6 h-6 flex items-center justify-center text-white text-xs font-bold">
+                        {item.quantity}
+                      </div>
+                    </div>
+                    <div className="ml-4 flex-1">
+                      <h2 className="text-lg font-bold">
+                        {item.product.productName}
+                      </h2>
+                      <p className="text-sm text-gray-600">
+                        {item.product.productDescription}
+                      </p>
+                    </div>
+                    <div className="text-base font-semibold">
+                      ${item.product.productPrice}
+                    </div>
+                  </div>
+                ))}
+                <hr className="border-t-2 border-black" />
               </div>
               <div className="flex justify-between text-black">
                 <div></div>
@@ -71,7 +99,7 @@ const Order = () => {
                 Payment Status {order.paymentStatus}
               </span>
               <div>
-                <hr className="h-[2px]" />
+                <hr className="border-t-2 border-black" />
               </div>
               <div className="flex justify-between text-black">
                 <div></div>
