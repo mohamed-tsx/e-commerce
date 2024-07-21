@@ -58,7 +58,7 @@ const Order = () => {
                 {order.items.map((item) => (
                   <div
                     key={item.productId}
-                    className="flex items-center p-4 bg-white rounded-md shadow-md mb-4 relative"
+                    className="flex items-center p-4 bg-white rounded-md mb-4 relative"
                   >
                     <div className="flex-shrink-0">
                       <img
@@ -71,16 +71,9 @@ const Order = () => {
                       </div>
                     </div>
                     <div className="ml-4 flex-1">
-                      <h2 className="text-lg font-bold">
-                        {item.product.productName}
-                      </h2>
-                      <p className="text-sm text-gray-600">
-                        {item.product.productDescription}
-                      </p>
+                      <h2>{item.product.productName}</h2>
                     </div>
-                    <div className="text-base font-semibold">
-                      ${item.product.productPrice}
-                    </div>
+                    <div className="text-sm">${item.product.productPrice}</div>
                   </div>
                 ))}
                 <hr className="border-t-2 border-black" />
