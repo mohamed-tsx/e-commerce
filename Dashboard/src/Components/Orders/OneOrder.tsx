@@ -61,7 +61,7 @@ const Order = () => {
         </div>
         <div className="p-6 space-y-6">
           <div className="bg-gray-50 p-4 rounded-md">
-            <h2 className="text-xl font-medium mb-4">Items</h2>
+            <h2 className="text-lg font-medium mb-4">Items</h2>
             {order.items.map((item) => (
               <div key={item.productId} className="flex items-center mb-4">
                 <img
@@ -71,7 +71,7 @@ const Order = () => {
                 />
 
                 <div className="ml-4 flex-1">
-                  <h3 className="text-lg font-semibold">
+                  <h3 className="text-md font-medium">
                     {item.product.productName}
                   </h3>
                   <p className="text-gray-500">
@@ -91,7 +91,7 @@ const Order = () => {
             </div>
           </div>
           <div className="bg-gray-50 p-4 rounded-md">
-            <h2 className="text-xl font-medium mb-4">Payment Summary</h2>
+            <h2 className="text-lg font-medium mb-4">Payment Summary</h2>
             <div className="text-gray-700 space-y-2">
               <div className="flex justify-between">
                 <p>Subtotal ({order.items.length} items)</p>
