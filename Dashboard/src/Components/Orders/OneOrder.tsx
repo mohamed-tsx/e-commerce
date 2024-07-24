@@ -60,7 +60,7 @@ const Order = () => {
           </div>
         </div>
         <div className="p-6 space-y-6">
-          <div className="bg-gray-50 p-4 rounded-md">
+          <div className="bg-gray-100 p-4 rounded-md">
             <h2 className="text-lg font-medium mb-4">Items</h2>
             {order.items.map((item) => (
               <div key={item.productId} className="flex items-center mb-4">
@@ -90,7 +90,7 @@ const Order = () => {
               </button>
             </div>
           </div>
-          <div className="bg-gray-50 p-4 rounded-md">
+          <div className="bg-gray-100 p-4 rounded-md">
             <h2 className="text-lg font-medium mb-4">Payment Summary</h2>
             <div className="text-gray-700 space-y-2">
               <div className="flex justify-between">
@@ -114,7 +114,7 @@ const Order = () => {
               </button>
             </div>
           </div>
-          <div className="bg-gray-50 p-4 rounded-md">
+          <div className="bg-gray-100 p-4 rounded-md">
             <h2 className="font-medium mb-4">Customer Information</h2>
             <hr className="border-t border-gray-300 my-4" />
 
