@@ -59,9 +59,12 @@ const Order = () => {
         </div>
         <div>
           <div className="bg-gray-200 p-4 rounded-md space-y-5 mt-5 w-3/4">
-            <span className="text-base lowercase bg-yellow-100 px-2 rounded-md">
-              {order.orderStatus} ({order.items.length})
-            </span>
+            <div className="flex gap-2 items-center">
+              <p>Order</p>
+              <span className="text-sm lowercase bg-yellow-100 px-2 rounded-full ring-slate-700 ring-1 ">
+                {order.orderStatus} ({order.items.length})
+              </span>
+            </div>
             <div>
               {order.items.map((item) => (
                 <div
@@ -103,9 +106,12 @@ const Order = () => {
         </div>
         <div>
           <div className="bg-gray-200 p-4 rounded-md space-y-5 mt-5 w-3/4">
-            <span className="text-base lowercase bg-yellow-100 px-2 rounded-full ring-slate-700 ring-1">
-              {order.paymentStatus}
-            </span>
+            <div className="flex gap-2 items-center">
+              <p>Payment</p>
+              <span className="text-sm lowercase bg-yellow-100 px-2 rounded-full ring-slate-700 ring-1 flex justify-center items-center">
+                {order.paymentStatus}
+              </span>
+            </div>
             <div className="mt-4 text-sm">
               <div className="flex items-center justify-between">
                 <div className="flex gap-40">
