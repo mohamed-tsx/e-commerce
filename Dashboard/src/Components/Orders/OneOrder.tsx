@@ -52,19 +52,19 @@ const Order = () => {
           <div>
             <div className="bg-gray-200 p-4 rounded-md space-y-5 mt-5 w-3/4">
               <span className="text-base lowercase bg-yellow-100 px-2 rounded-md">
-                Order Status {order.orderStatus} ({order.items.length})
+                {order.orderStatus} ({order.items.length})
               </span>
               <div>
                 {order.items.map((item) => (
                   <div
                     key={item.productId}
-                    className="flex items-center p-4 rounded-s-sm mb-4 relative"
+                    className="flex items-center p-4 mb-4 relative"
                   >
                     <div className="flex-shrink-0">
                       <img
                         src={item.product.imageUrl}
                         alt={item.product.productName}
-                        className="w-8 h-8 rounded-xl"
+                        className="w-8 h-8 rounded-md"
                       />
                       <div className="absolute top-2 left-2 bg-gray-500 rounded-full w-6 h-6 flex items-center justify-center text-white text-xs font-bold">
                         {item.quantity}
