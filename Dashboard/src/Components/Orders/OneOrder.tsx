@@ -44,106 +44,92 @@ const Order = () => {
   );
 
   return (
-    <div className="px-7 py-4">
-      <div>
-        <div className="flex gap-3 items-center">
-          <h1 className="text-sm">Order Details</h1>
-          <p className="text-base lowercase bg-yellow-100 px-2 rounded-md">
-            Payment {order.paymentStatus}
-          </p>
-          <p>
-            <span className="text-base lowercase bg-yellow-100 px-2 rounded-md">
-              Order Status {order.orderStatus}
-            </span>
-          </p>
-        </div>
-        <div>
-          <div className="bg-gray-200 p-4 rounded-md space-y-5 mt-5 w-3/4">
-            <div className="flex gap-2 items-center">
-              <p>Order</p>
-              <span className="text-sm lowercase bg-yellow-100 px-2 rounded-full ring-slate-700 ring-1 ">
-                {order.orderStatus} ({order.items.length})
+    <div className="p-8 min-h-screen">
+      <div className="max-w-4xl mx-auto rounded-lg shadow-md">
+        <div className="p-6 border-b border-gray-200">
+          <div className="flex justify-between items-center">
+            <h1 className="text-xl font-medium">Order Details</h1>
+            <div className="flex space-x-4">
+              <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
+                Payment: {order.paymentStatus}
+              </span>
+              <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                Order Status: {order.orderStatus}
               </span>
             </div>
-            <div>
-              {order.items.map((item) => (
-                <div
-                  key={item.productId}
-                  className="flex items-center p-4 mb-4 relative"
-                >
-                  <div className="flex-shrink-0">
-                    <img
-                      src={item.product.imageUrl}
-                      alt={item.product.productName}
-                      className="w-8 h-8 rounded-md"
-                    />
-                    <div className="absolute top-2 left-2 bg-gray-500 rounded-full w-6 h-6 flex items-center justify-center text-white text-xs font-bold">
-                      {item.quantity}
-                    </div>
-                  </div>
-                  <div className="ml-4 flex-1 text-sm">
-                    <h2>{item.product.productName}</h2>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="text-sm">
-                      ${item.product.productPrice} x {item.quantity}
-                    </div>
-                    <div className="text-sm">
-                      ${item.product.productPrice * item.quantity}
-                    </div>
-                  </div>
-                </div>
-              ))}
-              <hr className="border-t-2 border-black" />
-            </div>
+          </div>
+        </div>
+        <div className="p-6 space-y-6">
+          <div className="bg-gray-50 p-4 rounded-md">
+            <h2 className="text-xl font-medium mb-4">Items</h2>
+            {order.items.map((item) => (
+              <div key={item.productId} className="flex items-center mb-4">
+                <img
+                  src={item.product.imageUrl}
+                  alt={item.product.productName}
+                  className="w-16 h-16 rounded-md"
+                />
 
-            <div className="flex justify-end text-black">
-              <button className="bg-black text-white px-7 rounded-md py-2 text-sm flex items-center justify-center">
+                <div className="ml-4 flex-1">
+                  <h3 className="text-lg font-semibold">
+                    {item.product.productName}
+                  </h3>
+                  <p className="text-gray-500">
+                    ${item.product.productPrice.toFixed(2)} x {item.quantity}
+                  </p>
+                </div>
+                <div className="font-medium">
+                  ${(item.product.productPrice * item.quantity).toFixed(2)}
+                </div>
+              </div>
+            ))}
+            <hr className="border-t border-gray-300 my-4" />
+            <div className="flex justify-end">
+              <button className="bg-black text-white px-6 py-2 rounded-md">
                 Fulfill Items
               </button>
             </div>
           </div>
-        </div>
-        <div>
-          <div className="bg-gray-200 p-4 rounded-md space-y-5 mt-5 w-3/4">
-            <div className="flex gap-2 items-center">
-              <p>Payment</p>
-              <span className="text-sm lowercase bg-yellow-100 px-2 rounded-full ring-slate-700 ring-1 flex justify-center items-center">
-                {order.paymentStatus}
-              </span>
-            </div>
-            <div className="mt-4 text-sm">
-              <div className="flex items-center justify-between">
-                <div className="flex gap-40">
-                  <p>Subtotal</p>
-                  <p className="text-gray-700">{order.items.length} items</p>
-                </div>
+          <div className="bg-gray-50 p-4 rounded-md">
+            <h2 className="text-xl font-medium mb-4">Payment Summary</h2>
+            <div className="text-gray-700 space-y-2">
+              <div className="flex justify-between">
+                <p>Subtotal ({order.items.length} items)</p>
                 <p>${totalAmount.toFixed(2)}</p>
               </div>
-            </div>
-            <div className="mt-4 text-sm">
-              <div className="flex items-center justify-between">
-                <div className="flex gap-40 ">
-                  <p>Shipping</p>
-                  <p className="text-gray-700">{order.shippingMethod}</p>
-                </div>
-                <p>${order.shippingMethod === "rush" ? "15" : "5"}</p>
+              <div className="flex justify-between">
+                <p>Shipping ({order.shippingMethod})</p>
+                <p>${order.shippingMethod === "rush" ? "15.00" : "5.00"}</p>
               </div>
-            </div>
-            <div className="mt-4">
-              <div className="flex items-center justify-between font-medium">
+              <div className="flex justify-between font-semibold">
                 <p>Total</p>
-                <p>${order.total}</p>
+                <p>${order.total.toFixed(2)}</p>
               </div>
             </div>
-            <div>
-              <hr className="border-t-2 border-black" />
-            </div>
-            <div className="flex justify-between text-black">
-              <div></div>
-              <button className="bg-black text-white px-7 rounded-md py-2 text-sm flex items-center justify-center">
+            <hr className="border-t border-gray-300 my-4" />
+
+            <div className="mt-4 flex justify-end">
+              <button className="bg-black text-white px-6 py-2 rounded-md">
                 Collect Payment
               </button>
+            </div>
+          </div>
+          <div className="bg-gray-50 p-4 rounded-md">
+            <h2 className="font-medium mb-4">Customer Information</h2>
+            <hr className="border-t border-gray-300 my-4" />
+
+            <p>{order.name}</p>
+            <div className="mt-2">
+              <p className="text-gray-500">Contact Information</p>
+              <p className="text-blue-500">{order.email}</p>
+              <p className="text-blue-500">
+                {order.phoneNumber.startsWith("0") ? "" : "0"}
+                {order.phoneNumber}
+              </p>
+            </div>
+            <div className="mt-4">
+              <p className="text-gray-500">Shipping Address</p>
+              <p>{order.address}</p>
             </div>
           </div>
         </div>
