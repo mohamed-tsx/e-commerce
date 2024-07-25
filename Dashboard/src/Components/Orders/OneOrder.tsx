@@ -115,12 +115,12 @@ const Order = () => {
             </div>
           </div>
           <div className="bg-gray-100 p-4 rounded-md">
-            <h2 className="font-medium mb-4">Customer Information</h2>
+            <h2 className="font-medium mb-4 ">Customer Information</h2>
             <hr className="border-t border-gray-300 my-4" />
 
             <p>{order.name}</p>
             <div className="mt-2">
-              <p className="text-gray-500">Contact Information</p>
+              <p className="text-gray-500 text-sm">Contact Information</p>
               <p className="text-blue-500">{order.email}</p>
               <p className="text-blue-500">
                 {order.phoneNumber.startsWith("0") ? "" : "0"}
@@ -128,7 +128,7 @@ const Order = () => {
               </p>
             </div>
             <div className="mt-4">
-              <p className="text-gray-500">Shipping Address</p>
+              <p className="text-gray-500 text-sm">Shipping Address</p>
               <p>{order.address}</p>
             </div>
           </div>
