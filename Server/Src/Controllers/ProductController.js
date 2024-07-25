@@ -154,10 +154,88 @@ const oneProduct = asyncHandler(async (req, res) => {
   });
 });
 
+// @description Find one product
+// @Method UPDATE
+// @Route /products/update-product/:id
+// @Access public
+const updateProduct = asyncHandler(async (req, res) => {
+  const { id } = req.params; // Product ID from request params
+  const { productName, productDescription, productPrice, quantity } = req.body; // Updated product details from request body
+
+  console.log(productName);
+
+  // Fetch product image from request file
+  const image = req.file;
+
+  // Declare result to store the link
+  let result;
+
+  // Check if an image is provided
+  if (image) {
+    // Encode the image to base64
+    let encodedImage = `data:image/jpeg;base64,${image.buffer.toString(
+      "base64"
+    )}`;
+
+    // Upload the image to Cloudinary
+    result = await cloudinary.uploader.upload(encodedImage, {
+      resource_type: "image",
+      transformation: [{ width: 768, height: 768, crop: "limit" }],
+      encoding: "base64",
+    });
+  }
+
+  // Check if the provided details are valid
+  if (!(productDescription || productName || productPrice || quantity)) {
+    res.status(403);
+    throw new Error("Please fill all the required fields");
+  }
+
+  try {
+    // Fetch the existing product from the database
+    const existingProduct = await Prisma.product.findUnique({
+      where: { id },
+    });
+
+    if (!existingProduct) {
+      res.status(404);
+      throw new Error("Product not found");
+    }
+
+    // Prepare data for update, omitting undefined fields
+    const data = {
+      productName: productName || existingProduct.productName,
+      productDescription:
+        productDescription || existingProduct.productDescription,
+      productPrice: productPrice
+        ? parseFloat(productPrice)
+        : existingProduct.productPrice,
+      quantity: quantity ? parseInt(quantity) : existingProduct.quantity,
+      imageUrl: result ? result.secure_url : existingProduct.imageUrl,
+    };
+
+    // Update the product with new details
+    const updatedProduct = await Prisma.product.update({
+      where: { id },
+      data,
+    });
+
+    // Respond with the updated product details
+    res.status(200).json({
+      success: true,
+      message: "Product updated successfully",
+      updatedProduct,
+    });
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
 module.exports = {
   addProduct,
   allProducts,
   deleteProduct,
   oneProduct,
   adminViewAllProducts,
+  updateProduct,
 };

@@ -8,6 +8,7 @@ const {
   deleteProduct,
   oneProduct,
   adminViewAllProducts,
+  updateProduct,
 } = require("../Controllers/ProductController");
 const multerUpload = require("../Middlewares/MulterUpload");
 
@@ -16,5 +17,12 @@ router.get("/allProducts", allProducts);
 router.get("/adminViewAllProducts", Verify, isAdmin, adminViewAllProducts);
 router.delete("/deleteProduct/:id", Verify, isAdmin, deleteProduct);
 router.get("/:id", Verify, oneProduct);
+router.put(
+  "/update-product/:id",
+  Verify,
+  isAdmin,
+  multerUpload.single("image"),
+  updateProduct
+);
 
 module.exports = router;
