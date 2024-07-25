@@ -162,8 +162,6 @@ const updateProduct = asyncHandler(async (req, res) => {
   const { id } = req.params; // Product ID from request params
   const { productName, productDescription, productPrice, quantity } = req.body; // Updated product details from request body
 
-  console.log(productName);
-
   // Fetch product image from request file
   const image = req.file;
 
