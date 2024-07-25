@@ -5,7 +5,7 @@ const { cloudinary } = require("../Config/Cloudinary");
 // @description Add product
 // @Method POST
 // @Route /products/add/
-// @Access private only admin can access this route
+// @Access private: only admin can access this route
 const addProduct = asyncHandler(async (req, res) => {
   // Fetch product details from request body
   const { productName, productDescription } = req.body;
@@ -155,9 +155,9 @@ const oneProduct = asyncHandler(async (req, res) => {
 });
 
 // @description Find one product
-// @Method UPDATE
+// @Method PUT
 // @Route /products/update-product/:id
-// @Access public
+// @Access private: only admin can access this route
 const updateProduct = asyncHandler(async (req, res) => {
   const { id } = req.params; // Product ID from request params
   const { productName, productDescription, productPrice, quantity } = req.body; // Updated product details from request body
