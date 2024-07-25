@@ -44,7 +44,7 @@ const CartProducts = () => {
               <div className="flex flex-col">
                 <p>Taxes and Shipping calculated at checkout</p>
                 <button
-                  className="bg-blue-600 text-white p-2 rounded-md mt-2"
+                  className="bg-black text-white p-2 rounded-md mt-2"
                   onClick={() => {
                     navigate("/checkout");
                     changeStageToAdress();
