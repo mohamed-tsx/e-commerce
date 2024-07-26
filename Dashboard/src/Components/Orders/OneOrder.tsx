@@ -69,7 +69,6 @@ const Order = () => {
                   alt={item.product.productName}
                   className="w-12 h-12 rounded-md"
                 />
-
                 <div className="ml-4 flex-1">
                   <h3 className="text-sm font-medium">
                     {item.product.productName}
@@ -109,7 +108,14 @@ const Order = () => {
             <hr className="border-t border-gray-300 my-4" />
 
             <div className="mt-4 flex justify-end">
-              <button className="bg-black text-white px-6 py-2 rounded-md text-sm">
+              <button
+                className={`${
+                  order.paymentStatus === "PAID"
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-black"
+                } text-white px-6 py-2 rounded-md text-sm`}
+                disabled={order.paymentStatus === "PAID"}
+              >
                 Collect Payment
               </button>
             </div>
