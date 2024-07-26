@@ -72,3 +72,18 @@ export const specificOrder = async (id: string) => {
   }
   return `Failed to fetch orders ${data.message}`;
 };
+
+export const acceptPayment = async (id: string) => {
+  const apiUrl = `/api/orders/accept-payment/${id}`;
+  const res = await fetch(apiUrl, {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+    },
+  });
+  const data = await res.json();
+  if (data.success === true) {
+    return data;
+  }
+  return `Failed to accept payments ${data.message}`;
+};
