@@ -128,8 +128,50 @@ const getSpecificOrder = asyncHandler(async (req, res) => {
     order,
   });
 });
+
+const acceptPayment = asyncHandler(async (req, res) => {
+  // Fecth order id from request parameters
+  const { id } = req.params;
+
+  try {
+    // Check if order exists
+    const existingOrder = await Prisma.order.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        items: true,
+      },
+    });
+
+    // if order doesn't exist then throw an error
+    if (!existingOrder) {
+      res.status(404);
+      throw new Error("Order not found");
+    }
+
+    // If Order exists start the process of accepting payments
+
+    const updatedOrder = await Prisma.order.update({
+      where: { id },
+      data: {
+        paymentStatus: "PAID",
+        orderStatus: existingOrder.orderStatus,
+      },
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Payment Accepted successfully",
+      updatedOrder,
+    });
+  } catch (error) {
+    throw new Error(error);
+  }
+});
 module.exports = {
   createOrder,
   getAllOrders,
   getSpecificOrder,
+  acceptPayment,
 };
