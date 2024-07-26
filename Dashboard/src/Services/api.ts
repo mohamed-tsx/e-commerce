@@ -82,8 +82,5 @@ export const acceptPayment = async (id: string) => {
     },
   });
   const data = await res.json();
-  if (data.success === true) {
-    return data;
-  }
-  return `Failed to accept payments ${data.message}`;
+  return data;
 };

@@ -50,10 +50,10 @@ const Order = () => {
           <div className="flex justify-between items-center">
             <h1 className="text-xl font-medium">Order Details</h1>
             <div className="flex space-x-4">
-              <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
+              <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs">
                 Payment: {order.paymentStatus}
               </span>
-              <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+              <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs">
                 Order Status: {order.orderStatus}
               </span>
             </div>
