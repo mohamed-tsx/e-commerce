@@ -34,7 +34,11 @@ const OrderRow = ({
       <td>
         <div
           className={`whitespace-nowrap flex justify-center items-center  w-fit px-2 lowercase text-xs ${
-            paymentStatus === "PENDING" ? "bg-yellow-100 rounded-full" : ""
+            paymentStatus === "PENDING"
+              ? "bg-yellow-100 rounded-full"
+              : paymentStatus === "PAID"
+              ? "bg-green-300 rounded-full"
+              : ""
           }`}
         >
           {paymentStatus}
