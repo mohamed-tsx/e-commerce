@@ -61,47 +61,47 @@ const Order = () => {
         </div>
         <div className="p-6 space-y-6">
           <div className="bg-gray-100 p-4 rounded-md">
-            <h2 className="text-lg font-medium mb-4">Items</h2>
+            <h2 className="text-md font-medium mb-4">Items</h2>
             {order.items.map((item) => (
               <div key={item.productId} className="flex items-center mb-4">
                 <img
                   src={item.product.imageUrl}
                   alt={item.product.productName}
-                  className="w-16 h-16 rounded-md"
+                  className="w-12 h-12 rounded-md"
                 />
 
                 <div className="ml-4 flex-1">
-                  <h3 className="text-md font-medium">
+                  <h3 className="text-sm font-medium">
                     {item.product.productName}
                   </h3>
-                  <p className="text-gray-500">
+                  <p className="text-gray-500 text-xs">
                     ${item.product.productPrice.toFixed(2)} x {item.quantity}
                   </p>
                 </div>
-                <div className="font-medium">
+                <div className="font-medium text-sm">
                   ${(item.product.productPrice * item.quantity).toFixed(2)}
                 </div>
               </div>
             ))}
             <hr className="border-t border-gray-300 my-4" />
             <div className="flex justify-end">
-              <button className="bg-black text-white px-6 py-2 rounded-md">
+              <button className="bg-black text-white px-6 text-sm py-2 rounded-md">
                 Fulfill Items
               </button>
             </div>
           </div>
           <div className="bg-gray-100 p-4 rounded-md">
-            <h2 className="text-lg font-medium mb-4">Payment Summary</h2>
+            <h2 className="text-base font-medium mb-4">Payment Summary</h2>
             <div className="text-gray-700 space-y-2">
-              <div className="flex justify-between">
+              <div className="flex justify-between text-sm">
                 <p>Subtotal ({order.items.length} items)</p>
                 <p>${totalAmount.toFixed(2)}</p>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between text-sm">
                 <p>Shipping ({order.shippingMethod})</p>
                 <p>${order.shippingMethod === "rush" ? "15.00" : "5.00"}</p>
               </div>
-              <div className="flex justify-between font-semibold">
+              <div className="flex justify-between font-semibold text-sm">
                 <p>Total</p>
                 <p>${order.total.toFixed(2)}</p>
               </div>
@@ -109,27 +109,26 @@ const Order = () => {
             <hr className="border-t border-gray-300 my-4" />
 
             <div className="mt-4 flex justify-end">
-              <button className="bg-black text-white px-6 py-2 rounded-md">
+              <button className="bg-black text-white px-6 py-2 rounded-md text-sm">
                 Collect Payment
               </button>
             </div>
           </div>
           <div className="bg-gray-100 p-4 rounded-md">
-            <h2 className="font-medium mb-4 ">Customer Information</h2>
+            <h2 className="font-medium mb-4 text-base">Customer Information</h2>
             <hr className="border-t border-gray-300 my-4" />
-
             <p>{order.name}</p>
             <div className="mt-2">
               <p className="text-gray-500 text-sm">Contact Information</p>
-              <p className="text-blue-500">{order.email}</p>
-              <p className="text-blue-500">
+              <p className="text-blue-500 text-sm">{order.email}</p>
+              <p className="text-blue-500 text-sm">
                 {order.phoneNumber.startsWith("0") ? "" : "0"}
                 {order.phoneNumber}
               </p>
             </div>
             <div className="mt-4">
               <p className="text-gray-500 text-sm">Shipping Address</p>
-              <p>{order.address}</p>
+              <p className="text-sm">{order.address}</p>
             </div>
           </div>
         </div>
