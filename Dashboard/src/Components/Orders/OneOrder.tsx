@@ -46,8 +46,6 @@ const Order = () => {
   const handleAcceptPayment = async (orderId: string) => {
     try {
       const result = await acceptPayment(orderId);
-      console.log("Payment accepted:", result);
-      // You might want to update the UI to reflect the payment status
     } catch (error) {
       console.error("Failed to accept payment:", error);
       alert("There was an error processing the payment. Please try again.");
