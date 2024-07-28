@@ -169,9 +169,14 @@ const acceptPayment = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+
+const acceptOrder = asyncHandler(async (req, res) => {
+  console.log("Hi");
+});
 module.exports = {
   createOrder,
   getAllOrders,
   getSpecificOrder,
   acceptPayment,
+  acceptOrder,
 };
