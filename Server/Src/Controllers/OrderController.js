@@ -171,7 +171,48 @@ const acceptPayment = asyncHandler(async (req, res) => {
 });
 
 const acceptOrder = asyncHandler(async (req, res) => {
-  console.log("Hi");
+  // Fetch order id from request parameters
+  const { id } = req.params;
+
+  // Then chec if the order exists or not
+  const order = await Prisma.order.findUnique({
+    where: { id },
+    include: {
+      items: {
+        include: {
+          product: true, // Include product information for each item
+        },
+      },
+    },
+  });
+
+  if (!order) {
+    throw new Error("Order not found");
+  }
+
+  // If it exists then proceed to order accepting process
+  const updatedOrder = await Prisma.order.update({
+    where: { id },
+    data: {
+      orderStatus: "ACCEPTED",
+    },
+  });
+
+  // Update the quantity of each product in the order
+  for (const item of order.items) {
+    await Prisma.product.update({
+      where: { id: item.productId },
+      data: {
+        quantity: item.product.quantity - item.quantity,
+      },
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Successfully accepted order",
+      updatedOrder,
+    });
+  }
 });
 module.exports = {
   createOrder,
