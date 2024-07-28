@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Order as OrderType } from "../../Types/OrderTypes";
-import { acceptPayment, specificOrder } from "../../Services/api";
+import { acceptOrder, acceptPayment, specificOrder } from "../../Services/api";
 
 const Order = () => {
   const [order, setOrder] = useState<OrderType | undefined>();
@@ -46,6 +46,15 @@ const Order = () => {
   const handleAcceptPayment = async (orderId: string) => {
     try {
       const result = await acceptPayment(orderId);
+    } catch (error) {
+      console.error("Failed to accept payment:", error);
+      alert("There was an error processing the payment. Please try again.");
+    }
+  };
+
+  const handleAcceptOrder = async (orderId: string) => {
+    try {
+      const result = await acceptOrder(orderId);
     } catch (error) {
       console.error("Failed to accept payment:", error);
       alert("There was an error processing the payment. Please try again.");
@@ -100,6 +109,7 @@ const Order = () => {
                     : "bg-black"
                 } text-white px-6 py-2 rounded-md text-sm`}
                 disabled={order.orderStatus === "ACCEPTED"}
+                onClick={() => handleAcceptOrder(order.id)}
               >
                 Fulfill Items
               </button>
