@@ -96,3 +96,27 @@ export const acceptPayment = async (id: string) => {
     throw error; // Rethrow to handle it at the call site
   }
 };
+
+export const acceptOrder = async (id: string) => {
+  try {
+    const apiUrl = `/api/orders/accept-order/${id}`;
+    const res = await fetch(apiUrl, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!res.ok) {
+      // Handle HTTP errors
+      throw new Error(`Failed to accept order. Status: ${res.status}`);
+    }
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    // Handle network or other errors
+    console.error("Error accepting order:", error);
+    throw error; // Rethrow to handle it at the call site
+  }
+};
