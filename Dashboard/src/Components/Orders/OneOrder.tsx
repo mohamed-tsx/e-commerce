@@ -52,6 +52,7 @@ const Order = () => {
     }
   };
 
+  // for accpeping orders
   const handleAcceptOrder = async (orderId: string) => {
     try {
       const result = await acceptOrder(orderId);
