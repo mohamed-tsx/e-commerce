@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Order as OrderType } from "../../Types/OrderTypes";
 import { acceptOrder, acceptPayment, specificOrder } from "../../Services/api";
 
@@ -103,17 +103,12 @@ const Order = () => {
             ))}
             <hr className="border-t border-gray-300 my-4" />
             <div className="flex justify-end">
-              <button
-                className={`${
-                  order.orderStatus === "ACCEPTED"
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-black"
-                } text-white px-6 py-2 rounded-md text-sm`}
-                disabled={order.orderStatus === "ACCEPTED"}
-                onClick={() => handleAcceptOrder(order.id)}
+              <Link
+                to={`/orders/fulfilling/${order.id}`}
+                className="text-white px-6 py-2 rounded-md text-sm bg-black"
               >
                 Fulfill Items
-              </button>
+              </Link>
             </div>
           </div>
           <div className="bg-gray-100 p-4 rounded-md">
