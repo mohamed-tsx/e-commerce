@@ -103,12 +103,17 @@ const Order = () => {
             ))}
             <hr className="border-t border-gray-300 my-4" />
             <div className="flex justify-end">
-              <Link
-                to={`/orders/fulfilling/${order.id}`}
-                className="text-white px-6 py-2 rounded-md text-sm bg-black"
+              <button
+                className={`${
+                  order.orderStatus === "ACCEPTED"
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-black"
+                } text-white px-6 py-2 rounded-md text-sm`}
+                disabled={order.orderStatus === "ACCEPTED"}
+                onClick={() => handleAcceptOrder(order.id)}
               >
-                Fulfill Items
-              </Link>
+                FulFill Items
+              </button>
             </div>
           </div>
           <div className="bg-gray-100 p-4 rounded-md">
