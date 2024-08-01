@@ -103,17 +103,22 @@ const Order = () => {
             ))}
             <hr className="border-t border-gray-300 my-4" />
             <div className="flex justify-end">
-              <button
-                className={`${
-                  order.orderStatus === "ACCEPTED"
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-black"
-                } text-white px-6 py-2 rounded-md text-sm`}
-                disabled={order.orderStatus === "ACCEPTED"}
-                onClick={() => handleAcceptOrder(order.id)}
-              >
-                FulFill Items
-              </button>
+              <div className="flex justify-center items-center gap-3">
+                <button className="px-6 py-2 rounded-md text-sm ring-1 ring-gray-500">
+                  Print Reciept
+                </button>
+                <button
+                  className={`${
+                    order.orderStatus === "ACCEPTED"
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-black"
+                  } text-white px-6 py-2 rounded-md text-sm`}
+                  disabled={order.orderStatus === "ACCEPTED"}
+                  onClick={() => handleAcceptOrder(order.id)}
+                >
+                  FulFill Items
+                </button>
+              </div>
             </div>
           </div>
           <div className="bg-gray-100 p-4 rounded-md">
