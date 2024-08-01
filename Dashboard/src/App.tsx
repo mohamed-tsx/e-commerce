@@ -7,7 +7,6 @@ import Products from "./Pages/Products/Products";
 import AddProduct from "./Pages/Products/AddProduct";
 import Orders from "./Pages/Order Pages/Orders";
 import Order from "./Components/Orders/OneOrder";
-import OrderFullFiling from "./Pages/Order Fullfiling Page/OrderFullFiling";
 
 export default function App() {
   const location = useLocation();
@@ -28,10 +27,6 @@ export default function App() {
             <Route path="/products/new" element={<AddProduct />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/orders/:id" element={<Order />} />
-            <Route
-              path="/orders/fulfilling/:id"
-              element={<OrderFullFiling />}
-            />
           </Route>
         </Routes>
       </div>
