@@ -214,10 +214,25 @@ const acceptOrder = asyncHandler(async (req, res) => {
     });
   }
 });
+
+const acceptedOrders = asyncHandler(async (req, res) => {
+  // fetch accepted orders
+  const acceptedOrders = await Prisma.order.findMany({
+    where: {
+      orderStatus: "ACCEPTED",
+    },
+  });
+
+  res.status(200).json({
+    success: true,
+    acceptedOrders,
+  });
+});
 module.exports = {
   createOrder,
   getAllOrders,
   getSpecificOrder,
   acceptPayment,
   acceptOrder,
+  acceptedOrders,
 };
