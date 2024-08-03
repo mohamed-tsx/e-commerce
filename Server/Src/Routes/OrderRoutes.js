@@ -5,6 +5,7 @@ const {
   getSpecificOrder,
   acceptPayment,
   acceptOrder,
+  acceptedOrders,
 } = require("../Controllers/OrderController");
 const Verify = require("../Utils/Verify");
 const { isAdmin } = require("../Middlewares/userAuthMiddleware");
@@ -15,5 +16,6 @@ router.get("/all-orders", Verify, isAdmin, getAllOrders);
 router.get("/:id", Verify, isAdmin, getSpecificOrder);
 router.put("/accept-payment/:id", Verify, isAdmin, acceptPayment);
 router.put("/accept-order/:id", Verify, isAdmin, acceptOrder);
+router.get("/acceptedOrders", Verify, isAdmin, acceptedOrders);
 
 module.exports = router;
