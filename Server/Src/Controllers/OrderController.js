@@ -223,6 +223,10 @@ const acceptedOrders = asyncHandler(async (req, res) => {
     },
   });
 
+  if (!acceptedOrders) {
+    throw new Error("There's not accepted orders");
+  }
+
   res.status(200).json({
     success: true,
     acceptedOrders,
