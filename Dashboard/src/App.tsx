@@ -7,6 +7,7 @@ import Products from "./Pages/Products/Products";
 import AddProduct from "./Pages/Products/AddProduct";
 import Orders from "./Pages/Order Pages/Orders";
 import Order from "./Components/Orders/OneOrder";
+import PackingSlip from "./Pages/Slip Page/Packing-Slip";
 
 export default function App() {
   const location = useLocation();
@@ -27,6 +28,7 @@ export default function App() {
             <Route path="/products/new" element={<AddProduct />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/orders/:id" element={<Order />} />
+            <Route path="/packing-slip" element={<PackingSlip />} />
           </Route>
         </Routes>
       </div>
