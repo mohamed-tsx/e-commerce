@@ -28,7 +28,7 @@ export default function App() {
             <Route path="/products/new" element={<AddProduct />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/orders/:id" element={<Order />} />
-            <Route path="/packing-slip" element={<PackingSlip />} />
+            <Route path="/packing-slip/:id" element={<PackingSlip />} />
           </Route>
         </Routes>
       </div>
