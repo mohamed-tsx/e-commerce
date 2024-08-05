@@ -1,5 +1,9 @@
-const PackingSlip = () => {
-  return <div>Packing-Slip</div>;
-};
+import React from 'react'
 
-export default PackingSlip;
+const PackingSlip = () => {
+  return (
+    <div>Packing-Sli</div>
+  )
+}
+
+export default PackingSlip
