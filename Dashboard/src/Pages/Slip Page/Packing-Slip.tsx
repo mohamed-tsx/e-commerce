@@ -81,6 +81,16 @@ const PackingSlip = () => {
         </div>
         <hr className="border-t border-gray-300 my-2 mx-5" />
         <div className="p-6 space-y-6">
+          <div>
+            <p className="text-sm">Shipping to:</p>
+            <div className="space-y-1 text-xs p-1 text-gray-800">
+              <p>{order.name}</p>
+              <p>{order.email}</p>
+              <p>0{order.phoneNumber}</p>
+              <p>{order.address}</p>
+            </div>
+            <hr className="border-t border-gray-300 my-4" />
+          </div>
           <div className="p-4 rounded-md">
             <h2 className="text-md font-medium mb-4">Items</h2>
             {order.items.map((item) => (
