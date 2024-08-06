@@ -1,14 +1,19 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { useParams, useLocation } from "react-router-dom";
 import { Order as OrderType } from "../../Types/OrderTypes";
 import { acceptOrder, acceptPayment, specificOrder } from "../../Services/api";
 import { format } from "date-fns";
+import { useReactToPrint } from "react-to-print";
 
 const PackingSlip = () => {
   const [order, setOrder] = useState<OrderType | undefined>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const { id } = useParams<{ id: string }>();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const shouldPrint = searchParams.get("print") === "true";
+  const componentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const fetchOrder = async () => {
@@ -27,6 +32,16 @@ const PackingSlip = () => {
     fetchOrder();
   }, [id]);
 
+  useEffect(() => {
+    if (shouldPrint && !loading && !error && order) {
+      handlePrint();
+    }
+  }, [shouldPrint, loading, error, order]);
+
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -44,39 +59,18 @@ const PackingSlip = () => {
     0
   );
 
-  // For accepting paymentss
-  const handleAcceptPayment = async (orderId: string) => {
-    try {
-      await acceptPayment(orderId);
-    } catch (error) {
-      console.error("Failed to accept payment:", error);
-    }
-  };
-
-  // for accpeping orders
-  const handleAcceptOrder = async (orderId: string) => {
-    try {
-      await acceptOrder(orderId);
-    } catch (error) {
-      console.error("Failed to accept payment:", error);
-    }
-  };
-
   return (
-    <div className="p-8 min-h-screen">
+    <div ref={componentRef} className="p-8 min-h-screen">
       <div className="max-w-4xl mx-auto bg-gray-100">
-        <div className="p-6">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-2">
-              <img src="/Zylo Logo.png" alt="Logo" className="w-12" />
-            </div>
-
-            <div className="">
-              <p className="text-xs">Date</p>
-              <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs">
-                {format(new Date(order.createdAt), "MMMM dd, yyyy HH:mm")}
-              </span>
-            </div>
+        <div className="p-6 flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <img src="/Zylo Logo.png" alt="Logo" className="w-12" />
+          </div>
+          <div>
+            <p className="text-xs">Date</p>
+            <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs">
+              {format(new Date(order.createdAt), "MMMM dd, yyyy HH:mm")}
+            </span>
           </div>
         </div>
         <hr className="border-t border-gray-300 my-2 mx-5" />
@@ -86,7 +80,7 @@ const PackingSlip = () => {
             <div className="space-y-1 text-xs p-1 text-gray-800">
               <p>{order.name}</p>
               <p>{order.email}</p>
-              <p>0{order.phoneNumber}</p>
+              <p>{order.phoneNumber}</p>
               <p>{order.address}</p>
             </div>
             <hr className="border-t border-gray-300 my-4" />
