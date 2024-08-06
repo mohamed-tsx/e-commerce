@@ -46,7 +46,7 @@ const Order = () => {
   // For accepting paymentss
   const handleAcceptPayment = async (orderId: string) => {
     try {
-      const result = await acceptPayment(orderId);
+      await acceptPayment(orderId);
     } catch (error) {
       console.error("Failed to accept payment:", error);
       alert("There was an error processing the payment. Please try again.");
@@ -56,7 +56,7 @@ const Order = () => {
   // for accpeping orders
   const handleAcceptOrder = async (orderId: string) => {
     try {
-      const result = await acceptOrder(orderId);
+      await acceptOrder(orderId);
     } catch (error) {
       console.error("Failed to accept payment:", error);
       alert("There was an error processing the payment. Please try again.");
