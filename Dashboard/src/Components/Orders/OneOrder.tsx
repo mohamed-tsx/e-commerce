@@ -105,12 +105,15 @@ const Order = () => {
             <hr className="border-t border-gray-300 my-4" />
             <div className="flex justify-end">
               <div className="flex justify-center items-center gap-3">
-                <Link
-                  to={`/packing-slip/${order.id}?print=true`}
-                  className="px-6 py-2 rounded-md text-sm ring-1 ring-gray-500"
-                >
-                  Print Packing Slip
-                </Link>
+                {order.paymentStatus === "PAID" &&
+                  order.orderStatus === "ACCEPTED" && (
+                    <Link
+                      to={`/packing-slip/${order.id}?print=true`}
+                      className="px-6 py-2 rounded-md text-sm ring-1 ring-gray-500"
+                    >
+                      Print Packing Slip
+                    </Link>
+                  )}
                 <button
                   className={`${
                     order.orderStatus === "ACCEPTED"
