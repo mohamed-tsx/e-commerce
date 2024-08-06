@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { Order as OrderType } from "../../Types/OrderTypes";
-import { acceptOrder, acceptPayment, specificOrder } from "../../Services/api";
+import { specificOrder } from "../../Services/api";
 import { format } from "date-fns";
 import { useReactToPrint } from "react-to-print";
 
