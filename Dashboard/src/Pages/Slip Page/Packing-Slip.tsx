@@ -80,7 +80,7 @@ const PackingSlip = () => {
           </div>
         </div>
         <hr className="border-t border-gray-300 my-2 mx-5" />
-        <div className="p-6 space-y-6">
+        <div className="p-6 space-y-2">
           <div>
             <p className="text-sm">Shipping to:</p>
             <div className="space-y-1 text-xs p-1 text-gray-800">
@@ -131,6 +131,11 @@ const PackingSlip = () => {
               </div>
             </div>
             <hr className="border-t border-gray-300 my-4" />
+          </div>
+          <div className="flex flex-col justify-center items-center text-sm">
+            <p>Zylo</p>
+            <p>Thanks for choosing our products</p>
+            <p>For any assistance, feel free to contact our support team.</p>
           </div>
         </div>
       </div>
