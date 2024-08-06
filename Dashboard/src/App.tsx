@@ -11,13 +11,17 @@ import PackingSlip from "./Pages/Slip Page/Packing-Slip";
 
 export default function App() {
   const location = useLocation();
-  const isLocationLogin = location.pathname.includes("/login");
+  const isLoginPage = location.pathname.includes("/login");
+  const isPackingSlipPage = location.pathname.includes("/packing-slip");
 
   return (
     <div className="flex">
-      {!isLocationLogin && <Sidebar />}
+      {!isLoginPage && !isPackingSlipPage && <Sidebar />}
+
       <div
-        className={`${!isLocationLogin ? "pl-64 w-full" : "w-full"} px-16 py-6`}
+        className={`${
+          !isLoginPage && !isPackingSlipPage ? "pl-64 w-full" : "w-full"
+        } px-16 py-6`}
       >
         <Routes>
           <Route path="/" element={<Dashbaord />} />
