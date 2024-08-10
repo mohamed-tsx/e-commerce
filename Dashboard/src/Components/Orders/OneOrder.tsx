@@ -43,7 +43,6 @@ const Order = () => {
     0
   );
 
-  // For accepting payments
   const handleAcceptPayment = async (orderId: string) => {
     try {
       await acceptPayment(orderId);
@@ -53,7 +52,6 @@ const Order = () => {
     }
   };
 
- // For accepting orders
   const handleAcceptOrder = async (orderId: string) => {
     try {
       await acceptOrder(orderId);
