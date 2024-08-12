@@ -1,5 +1,9 @@
 const SuccessfullOrder = () => {
-  return <div>Successfull-order</div>;
+  return (
+    <div className="flex justify-center items-center min-h-screen">
+      You successfully ordered a product
+    </div>
+  );
 };
 
 export default SuccessfullOrder;
