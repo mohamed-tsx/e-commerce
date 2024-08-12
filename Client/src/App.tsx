@@ -7,6 +7,7 @@ import Shop from "./Pages/Shop Page/Shop";
 import Cart from "./Pages/Cart Page/Cart";
 import Checkout from "./Pages/Checkout Page/Checkout";
 import CheckoutRouteProtector from "./Components/ProtectedRoutes";
+import SuccessfullOrder from "./Pages/Order Page/Successfull-order";
 export default function App() {
   return (
     <div className="px-16 py-6">
@@ -21,6 +22,7 @@ export default function App() {
         <Route element={<CheckoutRouteProtector />}>
           <Route path="/checkout" element={<Checkout />} />
         </Route>
+        <Route path="/success" element={<SuccessfullOrder />} />
       </Routes>
     </div>
   );
