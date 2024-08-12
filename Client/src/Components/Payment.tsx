@@ -98,7 +98,7 @@ const Payment = () => {
         phoneNumber: "",
         paymentMethod: "",
       });
-      navigate("/");
+      navigate("/success");
     } catch (error: any) {
       setError(error.message);
     }
