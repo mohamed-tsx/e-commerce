@@ -37,11 +37,16 @@ const addProduct = asyncHandler(async (req, res) => {
   const quantity = parseInt(req.body.quantity);
 
   // Check if the details are empty except imageUrl
-  if (!(productDescription && productName && productPrice && quantity)) {
+  if (!(productDescription && productName && productPrice)) {
     res.status(403);
     throw new Error("Please fill all the required fields");
   }
 
+  // Check if product quantity is 0
+  if (quantity < 1) {
+    res.status(403);
+    throw new Error("Product quantity must be greater than 0");
+  }
   // If they're not empty then create the product
   const newProduct = await Prisma.product.create({
     data: {
