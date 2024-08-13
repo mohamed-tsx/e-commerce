@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import { addProduct } from "../../Services/api"; // Adjust the path as necessary
+import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ const AddProduct = () => {
     productImage: null as File | null,
     productImageUrl: "",
   });
+  const navigate = useNavigate();
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -45,6 +47,9 @@ const AddProduct = () => {
       }
 
       const response = await addProduct(formDataToSend); // Call your API function
+      if (response.success) {
+        navigate("/products");
+      }
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
       // Handle error (e.g., show an error message)
