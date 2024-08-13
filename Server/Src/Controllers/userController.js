@@ -114,7 +114,12 @@ const Login = asyncHandler(async (req, res) => {
 
   //If the password is correct log in the user and return success response
   res
-    .cookie("token", token, { httpOnly: true, sameSite: "none", secure: true })
+    .cookie("token", token, {
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+    })
     .status(200)
     .json({
       message: "User logged in successfully",
