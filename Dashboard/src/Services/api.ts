@@ -29,7 +29,7 @@ export const addProduct = async (formData: FormData) => {
 
   const data = await res.json();
   if (data.success) {
-    return "Successfully added new product";
+    return data;
   }
   return `Failed to add product: ${data.message}`;
 };
