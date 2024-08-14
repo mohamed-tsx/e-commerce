@@ -25,7 +25,7 @@ const createOrder = asyncHandler(async (req, res) => {
       email
     )
   ) {
-    res.status(403);
+    // Throwing an error here, the asyncHandler will catch it
     throw new Error("Your order isn't complete");
   }
 
@@ -45,9 +45,19 @@ const createOrder = asyncHandler(async (req, res) => {
       (productId) => !existingProductIds.includes(productId)
     );
     if (missingProducts.length > 0) {
-      res.status(404);
       throw new Error(`Some products in the order are not available.`);
     }
+
+    // Check if any products are out of stock
+    const outOfStockProducts = items.filter((item) => {
+      const product = existingProducts.find((p) => p.id === item.id);
+      return product.quantity < item.quantity;
+    });
+
+    if (outOfStockProducts.length > 0) {
+      throw new Error("Some products are out of stock.");
+    }
+
     // Create a new order
     const newOrder = await Prisma.order.create({
       data: {
@@ -71,12 +81,13 @@ const createOrder = asyncHandler(async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: "Order is created succesfully",
+      message: "Order is created successfully",
       order: newOrder,
     });
   } catch (error) {
-    res.status(500).json({ message: "Failed to create order" });
-    throw new Error(error);
+    // Handle the thrown error by sending an appropriate response
+    res.status(500).json({ message: error.message });
+    // Optionally, you can log the error or perform other actions here
   }
 });
 
