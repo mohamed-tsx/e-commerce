@@ -161,7 +161,7 @@ const oneProduct = asyncHandler(async (req, res) => {
 
 // @description Find one product
 // @Method PUT
-// @Route /products/update-product/:id
+// @Route /products/updateproduct/:id
 // @Access private: only admin can access this route
 const updateProduct = asyncHandler(async (req, res) => {
   const { id } = req.params; // Product ID from request params
@@ -234,6 +234,39 @@ const updateProduct = asyncHandler(async (req, res) => {
   }
 });
 
+// @description Find the best seller
+// @Method GET
+// @Route /products/bestseller
+// @Access public
+const bestSeller = asyncHandler(async (req, res) => {
+  // Fetch Products from database
+  const allProducts = await Prisma.product.findMany({
+    include: {
+      OrderItems: true,
+    },
+  });
+
+  const salesData = allProducts.map((product) => {
+    const totalSales = product.OrderItems.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
+    return {
+      ...product,
+      totalSales,
+    };
+  });
+
+  // Find the best-selling product
+  const bestSeller = salesData.reduce((prev, current) =>
+    prev.totalSales > current.totalSales ? prev : current
+  );
+  res.status(200).json({
+    bestSeller,
+    success: true,
+  });
+});
+
 module.exports = {
   addProduct,
   allProducts,
@@ -241,4 +274,5 @@ module.exports = {
   oneProduct,
   adminViewAllProducts,
   updateProduct,
+  bestSeller,
 };
