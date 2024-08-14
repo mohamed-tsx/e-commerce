@@ -9,6 +9,7 @@ const {
   oneProduct,
   adminViewAllProducts,
   updateProduct,
+  bestSeller,
 } = require("../Controllers/ProductController");
 const multerUpload = require("../Middlewares/MulterUpload");
 
@@ -24,5 +25,6 @@ router.put(
   multerUpload.single("image"),
   updateProduct
 );
+router.get("/best-seller", Verify, isAdmin, bestSeller);
 
 module.exports = router;
