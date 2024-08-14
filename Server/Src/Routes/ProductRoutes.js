@@ -17,7 +17,7 @@ router.post("/add", Verify, isAdmin, multerUpload.single("image"), addProduct);
 router.get("/allProducts", allProducts);
 router.get("/adminViewAllProducts", Verify, isAdmin, adminViewAllProducts);
 router.delete("/deleteProduct/:id", Verify, isAdmin, deleteProduct);
-router.get("/:id", Verify, oneProduct);
+router.get("/one-product/:id", Verify, oneProduct);
 router.put(
   "/update-product/:id",
   Verify,
