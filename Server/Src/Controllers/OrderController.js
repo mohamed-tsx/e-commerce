@@ -29,6 +29,7 @@ const createOrder = asyncHandler(async (req, res) => {
     throw new Error("Your order isn't complete");
   }
 
+  // Start the api controller
   try {
     const productIds = items.map((item) => item.id);
     const existingProducts = await Prisma.product.findMany({
