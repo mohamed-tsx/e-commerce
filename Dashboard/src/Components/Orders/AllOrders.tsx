@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Orders } from "../../Services/api";
 import { Order as OrderType } from "../../Types/OrderTypes";
-import { Link } from "react-router-dom";
 import OrderRow from "./Order";
 
 const AllOrders = () => {

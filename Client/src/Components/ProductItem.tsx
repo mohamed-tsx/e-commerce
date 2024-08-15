@@ -8,6 +8,7 @@ type ProductProps = {
   productDescription: string;
   productName: string;
   productPrice: number;
+  quantity: number;
 };
 
 const ProductItem = ({
@@ -16,6 +17,7 @@ const ProductItem = ({
   productDescription,
   productName,
   productPrice,
+  quantity,
 }: ProductProps) => {
   const addProducts = useCart((state) => state.addProduct);
   const allProducts = useCart((state) => state.Products);
@@ -27,13 +29,14 @@ const ProductItem = ({
     productDescription,
     productName,
     productPrice,
+    quantity,
   };
 
   const handleAddingProductToCart = (productDetails: any) => {
     const productExists = allProducts.some(
       (product) => product.id === productDetails.id
     );
-    if (!productExists) {
+    if (!productExists && productDetails.quantity > 0) {
       addProducts(productDetails);
       setIsProductInCart(true);
     }
@@ -71,6 +74,13 @@ const ProductItem = ({
                 disabled={true}
               >
                 Already In Cart
+              </button>
+            ) : quantity < 1 ? (
+              <button
+                className="px-5 py-2 bg-gray-400 text-white rounded-md"
+                disabled={true}
+              >
+                Out of Stock
               </button>
             ) : (
               <button
