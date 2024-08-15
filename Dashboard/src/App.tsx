@@ -8,6 +8,7 @@ import AddProduct from "./Pages/Products/AddProduct";
 import Orders from "./Pages/Order Pages/Orders";
 import Order from "./Components/Orders/OneOrder";
 import PackingSlip from "./Pages/Slip Page/Packing-Slip";
+import Notifications from "./Pages/Notifications Page/Notifications";
 
 export default function App() {
   const location = useLocation();
@@ -33,6 +34,7 @@ export default function App() {
             <Route path="/orders" element={<Orders />} />
             <Route path="/orders/:id" element={<Order />} />
             <Route path="/packing-slip/:id" element={<PackingSlip />} />
+            <Route path="/notifications" element={<Notifications />} />
           </Route>
         </Routes>
       </div>
