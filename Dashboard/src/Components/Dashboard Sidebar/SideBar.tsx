@@ -1,10 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import { FiHome } from "react-icons/fi";
-import { IoMdPricetag } from "react-icons/io";
+import { IoMdNotificationsOutline, IoMdPricetag } from "react-icons/io";
 import { LuArchive } from "react-icons/lu";
 import { MdOutlineAnalytics } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
-import { BiUser } from "react-icons/bi";
+import { BiNotification, BiNotificationOff, BiUser } from "react-icons/bi";
 
 const Sidebar = () => {
   const location = useLocation();
@@ -17,6 +17,9 @@ const Sidebar = () => {
             <div className="flex items-center space-x-2">
               <img src="/Zylo Logo.png" alt="Logo" className="w-8" />
             </div>
+            <Link to="/notifications">
+              <IoMdNotificationsOutline />
+            </Link>
           </div>
           <nav className="p-4">
             <ul>
