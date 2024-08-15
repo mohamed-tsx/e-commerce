@@ -24,12 +24,6 @@ const AllOrders = () => {
     <div className="px-7 py-4">
       <div className="flex justify-between items-center">
         <h1 className="text-lg font-medium">Orders</h1>
-        <Link
-          to="/order/new"
-          className="flex items-center justify-center px-4 py-2 bg-black text-white rounded"
-        >
-          Add order
-        </Link>
       </div>
       <div className="bg-gray-300 w-full mt-10 p-6 rounded text-xs">
         <table className="min-w-full divide-y divide-black">
