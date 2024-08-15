@@ -77,7 +77,7 @@ const ProductItem = ({
               </button>
             ) : quantity < 1 ? (
               <button
-                className="px-5 py-2 bg-gray-400 text-white rounded-md"
+                className="px-5 py-2 bg-red-400 text-white rounded-md"
                 disabled={true}
               >
                 Out of Stock
