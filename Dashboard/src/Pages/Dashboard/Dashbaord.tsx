@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Orders } from "../../Services/api";
 import { Order } from "../../Types/OrderTypes";
+import { LuArchive } from "react-icons/lu";
 
 const Dashbaord = () => {
   const [orders, setOrders] = useState<Order[]>();
@@ -24,6 +25,10 @@ const Dashbaord = () => {
           <p className="text-2xl font-semibold">64</p>
         </div>
         <div className="bg-black p-5 w-96 text-white rounded-md">
+          <div className="flex justify-between items-center">
+            <p>Total Orders</p>
+            <LuArchive />
+          </div>
           <p className="text-2xl font-semibold">{orders?.length}</p>
         </div>
       </div>
