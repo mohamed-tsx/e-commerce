@@ -1,19 +1,23 @@
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useOrderStore } from "../../Hooks/useOrder"; // Ensure the path is correct
 
 interface OrderTapsProps {
   text: string;
-  to: string;
 }
 
-const OrderTaps = ({ text, to }: OrderTapsProps) => {
+const OrderTap = ({ text }: OrderTapsProps) => {
+  const handleOrderTapChange = useOrderStore(
+    (state) => state.handleOrderTapChange
+  );
+
   return (
-    <Link
-      to={`/${to}`}
+    <button
+      onClick={() => handleOrderTapChange(text)}
       className="flex justify-center items-center px-2 py-0.5 rounded-md bg-black text-white text-sm"
     >
       {text}
-    </Link>
+    </button>
   );
 };
 
-export default OrderTaps;
+export default OrderTap;

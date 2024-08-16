@@ -1,24 +1,35 @@
 import { useEffect, useState } from "react";
-import { Orders } from "../../Services/api";
+import { accptedOrders, Orders } from "../../Services/api";
 import { Order as OrderType } from "../../Types/OrderTypes";
 import OrderRow from "./Order";
 import OrderTaps from "./OrderTaps";
+import { useOrderStore } from "../../Hooks/useOrder";
 
 const AllOrders = () => {
-  const [orders, setorder] = useState<OrderType[]>([]);
+  const [orders, setOrder] = useState<OrderType[]>([]);
+  const tap = useOrderStore((state) => state.tap);
 
   useEffect(() => {
+    console.log(tap);
     const fetchOrders = async () => {
       try {
-        const orderData: OrderType[] = await Orders();
-        setorder(orderData);
+        let orderData: OrderType[];
+
+        if (tap === "Accepted") {
+          orderData = await accptedOrders(); // Fetch orders based on the "Accepted" condition
+        } else {
+          orderData = await Orders(); // Fetch orders based on the other condition
+        }
+
+        setOrder(orderData);
       } catch (error) {
-        console.error("Failed to fetch order", error);
+        console.error("Failed to fetch orders", error);
       }
     };
-
     fetchOrders();
-  }, []);
+  }, [tap]); // Add `tap` to the dependency array
+
+  console.log("data ../// ", orders);
 
   return (
     <div className="px-7 py-4">
@@ -26,8 +37,9 @@ const AllOrders = () => {
         <h1 className="text-lg font-medium">Orders</h1>
       </div>
       <div className="flex gap-3 items-center">
-        <OrderTaps text="Accepted" to="accepted" />
-        <OrderTaps text="Accepted" to="accepted" />
+        {/* Ensure that each `OrderTaps` has unique text */}
+        <OrderTaps text="Accepted" />
+        <OrderTaps text="All Orders" />
       </div>
       <div className="bg-gray-300 w-full mt-10 p-6 rounded text-xs">
         <table className="min-w-full divide-y divide-black">
@@ -51,9 +63,9 @@ const AllOrders = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-black text-sm">
-            {orders.map((order) => (
-              <OrderRow {...order} />
-            ))}
+            {orders
+              ? orders?.map((order) => <OrderRow key={order.id} {...order} />)
+              : null}
           </tbody>
         </table>
       </div>
