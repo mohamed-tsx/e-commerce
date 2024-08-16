@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { useOrderStore } from "../../Hooks/useOrder"; // Ensure the path is correct
 
 interface OrderTapsProps {

@@ -254,6 +254,7 @@ const acceptedOrders = asyncHandler(async (req, res) => {
     acceptedOrders,
   });
 });
+
 module.exports = {
   createOrder,
   getAllOrders,
