@@ -233,10 +233,20 @@ const acceptedOrders = asyncHandler(async (req, res) => {
     where: {
       orderStatus: "ACCEPTED",
     },
+    include: {
+      items: {
+        select: {
+          product: true,
+          orderId: true,
+          productId: true,
+          quantity: true,
+        },
+      },
+    },
   });
 
   if (!acceptedOrders) {
-    throw new Error("There's not accepted orders");
+    throw new Error("There's no accepted orders");
   }
 
   res.status(200).json({
