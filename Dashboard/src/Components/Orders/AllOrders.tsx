@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Orders } from "../../Services/api";
 import { Order as OrderType } from "../../Types/OrderTypes";
 import OrderRow from "./Order";
+import OrderTaps from "./OrderTaps";
 
 const AllOrders = () => {
   const [orders, setorder] = useState<OrderType[]>([]);
@@ -23,6 +24,10 @@ const AllOrders = () => {
     <div className="px-7 py-4">
       <div className="flex justify-between items-center">
         <h1 className="text-lg font-medium">Orders</h1>
+      </div>
+      <div className="flex gap-3 items-center">
+        <OrderTaps text="Accepted" to="accepted" />
+        <OrderTaps text="Accepted" to="accepted" />
       </div>
       <div className="bg-gray-300 w-full mt-10 p-6 rounded text-xs">
         <table className="min-w-full divide-y divide-black">
