@@ -120,3 +120,14 @@ export const acceptOrder = async (id: string) => {
     throw error; // Rethrow to handle it at the call site
   }
 };
+
+export const accptedOrders = async () => {
+  const apiUrl = "api/orders/acceptedOrders";
+  const res = await fetch(apiUrl);
+  const data = await res.json();
+  if (data.success) {
+    const orders = data["acceptedOrders"];
+    return orders;
+  }
+  return `Failed to fetch orders ${data.message}`;
+};
