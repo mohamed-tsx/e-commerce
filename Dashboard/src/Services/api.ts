@@ -58,7 +58,7 @@ export const Orders = async () => {
 };
 
 export const specificOrder = async (id: string) => {
-  const apiUrl = `/api/orders/${id}`;
+  const apiUrl = `/api/orders/one-order/${id}`;
   const res = await fetch(apiUrl, {
     headers: {
       "content-type": "application/json",
