@@ -34,7 +34,7 @@ export const addProduct = async (formData: FormData) => {
   return `Failed to add product: ${data.message}`;
 };
 
-// Orders
+// Orders existence checking api service
 export const checkIfOrdersExists = async () => {
   const apiUrl = "api/orders/all-orders";
   const res = await fetch(apiUrl);
