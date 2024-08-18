@@ -237,7 +237,7 @@ const updateProduct = asyncHandler(async (req, res) => {
 // @description Find the best seller
 // @Method GET
 // @Route /products/bestseller
-// @Access public
+// @Access private
 const bestSeller = asyncHandler(async (req, res) => {
   // Fetch Products from database
   const allProducts = await Prisma.product.findMany({
