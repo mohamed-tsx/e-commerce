@@ -130,7 +130,6 @@ const Login = asyncHandler(async (req, res) => {
 const me = asyncHandler(async (req, res) => {
   const token = req.user;
   const { id } = token;
-  console.log(id);
   const user = await Prisma.user.findUnique({
     where: {
       id,
