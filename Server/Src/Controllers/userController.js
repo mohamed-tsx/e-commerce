@@ -135,6 +135,13 @@ const me = asyncHandler(async (req, res) => {
     where: {
       id,
     },
+    select: {
+      id: true,
+      username: true,
+      email: true,
+      role: true,
+      photo: true,
+    },
   });
 
   if (!user) {
