@@ -92,7 +92,7 @@ const AddProduct = () => {
           <input
             type="file"
             onChange={handleFileChange}
-            className="hidden"
+            className="sr-only"
             id="productImage"
             accept="image/*"
           />
