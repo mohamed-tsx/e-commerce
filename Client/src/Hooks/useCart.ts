@@ -17,10 +17,12 @@ type UseCart = {
   removeAllProducts: () => void;
   totalPrice: number;
   totalItems: number;
+  tax: number;
   addQuantity: (product: Product) => void;
   decrementQuantity: (product: Product) => void;
   shippingPrice: number;
   setShippingPrice: (price: number) => void;
+  calculateTax: (totalPrice: number) => void; // Renamed to calculate the tax based on the total price
 };
 
 export const useCart = create<UseCart>()(
@@ -30,6 +32,8 @@ export const useCart = create<UseCart>()(
       totalPrice: 0,
       totalItems: 0,
       shippingPrice: 0,
+      tax: 0,
+
       addProduct: (product: Product) => {
         const cart = get().Products;
         const cartItem = cart.find((item) => item.id === product.id);
@@ -51,10 +55,11 @@ export const useCart = create<UseCart>()(
             Products: [...cart, { ...product, quantity: 1 }],
             totalItems: state.totalItems + 1,
             totalPrice: state.totalPrice + product.productPrice,
-            shippingPrice: 0,
           }));
         }
+        get().calculateTax(get().totalPrice); // Recalculate tax whenever a product is added
       },
+
       removeProduct: (product: Product) => {
         set((state) => {
           const cartItem = state.Products.find(
@@ -70,15 +75,19 @@ export const useCart = create<UseCart>()(
           }
           return state;
         });
+        get().calculateTax(get().totalPrice); // Recalculate tax whenever a product is removed
       },
+
       removeAllProducts: () => {
         set(() => ({
           Products: [],
           totalPrice: 0,
           totalItems: 0,
           shippingPrice: 0,
+          tax: 0, // Reset tax
         }));
       },
+
       addQuantity: (product) => {
         set((state) => {
           const cart = get().Products;
@@ -97,7 +106,9 @@ export const useCart = create<UseCart>()(
           }
           return state;
         });
+        get().calculateTax(get().totalPrice); // Recalculate tax whenever quantity is added
       },
+
       decrementQuantity: (product) => {
         set((state) => {
           const cart = get().Products;
@@ -126,10 +137,18 @@ export const useCart = create<UseCart>()(
           }
           return state;
         });
+        get().calculateTax(get().totalPrice); // Recalculate tax whenever quantity is decremented
       },
+
       setShippingPrice: (price: number) => {
         set(() => ({
           shippingPrice: price,
+        }));
+      },
+
+      calculateTax: (totalPrice) => {
+        set(() => ({
+          tax: totalPrice * 0.05, // Calculate tax based on total price
         }));
       },
     }),
