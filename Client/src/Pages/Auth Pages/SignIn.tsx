@@ -129,7 +129,7 @@ const SignIn = () => {
               type="submit"
               className="bg-black p-2 text-white rounded-lg"
             >
-              Register
+              Login
             </button>
           </form>
         </div>
