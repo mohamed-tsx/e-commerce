@@ -15,6 +15,7 @@ type UserStore = {
   logout: () => void;
 };
 
+// Use user hook
 export const useUser = create<UserStore>()(
   persist(
     (set, get) => ({
