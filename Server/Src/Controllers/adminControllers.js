@@ -39,6 +39,7 @@ const PromoteToAdmin = asyncHandler(async (req, res) => {
     .status(200)
     .json({ success: true, message: "User updated successfully", updatedUser });
 });
+
 module.exports = {
   PromoteToAdmin,
 };
