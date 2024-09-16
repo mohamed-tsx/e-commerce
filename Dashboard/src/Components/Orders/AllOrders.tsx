@@ -10,7 +10,6 @@ const AllOrders = () => {
   const tap = useOrderStore((state) => state.tap);
 
   useEffect(() => {
-    console.log(tap);
     const fetchOrders = async () => {
       try {
         let orderData: OrderType[];
@@ -29,7 +28,6 @@ const AllOrders = () => {
     fetchOrders();
   }, [tap]); // Add `tap` to the dependency array
 
-  console.log("data ../// ", orders);
 
   return (
     <div className="px-7 py-4">
