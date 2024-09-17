@@ -17,7 +17,6 @@ const CheckoutProducts = () => {
   // Calculate the VAT when the total price changes
   useEffect(() => {
     calculateTax(totalAmount);
-    // Recalculate VAT whenever the total price changes
   }, [totalPrice, calculateTax, shippingPrice]);
 
   useEffect(() => {
