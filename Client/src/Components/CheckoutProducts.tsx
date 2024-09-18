@@ -35,6 +35,7 @@ const CheckoutProducts = () => {
 
   const totalAmount = totalPrice + shippingPrice;
 
+  // Total amount with tax 
   const totalAmountWithTax = totalAmount + tax;
 
   return (
