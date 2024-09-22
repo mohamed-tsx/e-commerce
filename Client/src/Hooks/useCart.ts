@@ -57,7 +57,7 @@ export const useCart = create<UseCart>()(
             totalPrice: state.totalPrice + product.productPrice,
           }));
         }
-        get().calculateTax(get().totalPrice); // Recalculate tax whenever a product is added
+        get().calculateTax(get().totalPrice);
       },
 
       removeProduct: (product: Product) => {
