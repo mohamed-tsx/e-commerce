@@ -7,12 +7,8 @@ import CheckoutProducts from "../../Components/CheckoutProducts";
 import { useNavigate } from "react-router-dom";
 const Checkout = () => {
   const stage = useCheckout((state) => state.stage);
-  const {
-    changeStageToAddress,
-    changeStageToCart,
-    changeStageToPayment,
-    changeStageToShipping,
-  } = useCheckout();
+  const { changeStageToAddress, changeStageToPayment, changeStageToShipping } =
+    useCheckout();
   useEffect(() => {
     document.title = "Checkout";
   });
