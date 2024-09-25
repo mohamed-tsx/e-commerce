@@ -19,7 +19,6 @@ const Checkout = () => {
         <div className="w-1/2">
           <div className="flex items-center justify-center mb-6">
             <h2 className="sr-only">Steps</h2>
-
             <div>
               <ol className="flex items-center gap-2 text-xs font-medium text-gray-500 sm:gap-4">
                 <button
