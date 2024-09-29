@@ -73,7 +73,6 @@ const Checkout = () => {
                     </span>
                   )}
                 </button>
-
                 <button
                   onClick={() => changeStageToShipping()}
                   className={`flex items-center justify-end gap-2 ${
